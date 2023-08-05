@@ -38,11 +38,19 @@ const evenNumOfChars = arr => {
 };
 
 const smallerThanCurr = arr => {
+  const array = [];
 
-  // Your code here
+  arr.forEach(ele => {
+    let count = 0;
+    arr.forEach(subEle => {
+      if (subEle < ele) count ++;
+    }); 
+    array.push(count);
+  });
 
+  return array;
 };
-
+// O(n2)
 const twoSum = (arr, target) => {
 
   // Your code here
