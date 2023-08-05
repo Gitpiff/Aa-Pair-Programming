@@ -64,8 +64,16 @@ const twoSum = (arr, target) => {
 };
 
 const secondLargest = arr => {
-
-  // Your code here
+  if (!arr.length) return undefined;
+  else if (arr.length < 2) return undefined;
+  else {
+    const largest = Math.max(...arr);
+    const largeIndex = arr.indexOf(largest);
+  
+    arr.splice(largeIndex, 1);
+  
+    return Math.max(...arr);
+  }
 };
 
 const shuffle = (arr) => {
