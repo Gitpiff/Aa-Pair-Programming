@@ -27,8 +27,14 @@ const runningSum = arr => {
 };
 
 const evenNumOfChars = arr => {
+  let chars = 0
+  arr.forEach(string => {
+    if(string.length % 2 === 0) {
+      chars ++
+    }
+  })
 
-  // Your code here
+  return chars
 };
 
 const smallerThanCurr = arr => {
