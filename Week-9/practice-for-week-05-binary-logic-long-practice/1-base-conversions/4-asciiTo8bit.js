@@ -6,9 +6,7 @@ const addZeros = require('../utils/addZeros');
 
 /******************************************************************************/
 
-const asciiTo8bit = str => {
-  // Your code here
-};
+const asciiTo8bit = str => str.split('').map(element => addZeros(element.charCodeAt().toString(2), 8)).join('');
 
 /******************************************************************************/
 
