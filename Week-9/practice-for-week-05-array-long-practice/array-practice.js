@@ -51,9 +51,16 @@ const smallerThanCurr = arr => {
   return array;
 };
 // O(n2)
-const twoSum = (arr, target) => {
 
-  // Your code here
+const twoSum = (arr, target) => {
+  let bool = false
+  arr.forEach(num => {
+    arr.forEach(subNum => {
+      if(num + subNum === target) bool = true
+    })
+  })
+
+  return bool
 };
 
 const secondLargest = arr => {
