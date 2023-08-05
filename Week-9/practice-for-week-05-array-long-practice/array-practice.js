@@ -11,7 +11,19 @@ console.log(findMinimum([])) //undefined
 
 const runningSum = arr => {
 
-  // Your code here
+  const array = [];
+
+  arr.forEach((ele, i) => {
+    if (i > 0) {
+      let newEle = ele + array[i - 1];
+      array.push(newEle);
+    }
+    else {
+      array.push(ele);
+    }
+  });
+
+  return array;
 };
 
 const evenNumOfChars = arr => {
