@@ -78,7 +78,18 @@ const secondLargest = arr => {
 
 const shuffle = (arr) => {
 
-  // Your code here
+  const newArr = []
+
+  arr.forEach(num => {
+    let random = Math.floor(Math.random() * 2)
+    if(random === 0) {
+      newArr.push(num)
+    } else if(random === 1) {
+      newArr.unshift(num)
+    }
+  })
+
+  return newArr
 };
 
 
