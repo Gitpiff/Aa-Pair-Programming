@@ -7,3 +7,12 @@ Construct a timing test to verify the time complexities of `addToHead` and
 */
 
 // Your code here
+
+let n = 10000
+let ll = new LinkedList();
+
+console.time("LL: addToHead")
+for (let i = 0 ; i < n ; i++) {
+  ll.addToHead(i);
+}
+console.timeEnd("LL: addToHead")
