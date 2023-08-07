@@ -14,11 +14,12 @@ class LinkedList {
 
   addToHead(val) {
    const newNode =  new LinkedListNode(val)
-    if(this.head) {
-      newNode.next = this.head
-    } else {
-      this.tail = newNode
-    }
+    // if(this.head) {
+    //   newNode.next = this.head
+    // } else {
+    //   this.tail = newNode
+    // }
+    newNode.next = this.head
     this.head = newNode
     this.length ++
   }
