@@ -15,7 +15,9 @@ class DoublyLinkedList {
   }
 
   addToHead(val) {
+
     const newNode = new DoublyLinkedListNode(val)
+
     if(this.head) {
       this.head.prev = newNode
       newNode.next = this.head
@@ -51,5 +53,6 @@ class DoublyLinkedList {
     console.log("NULL");
   }
 }
+// console.log(addToHead(50))
 
 module.exports = DoublyLinkedList;
