@@ -62,9 +62,10 @@ class SinglyLinkedList {
 
     removeFromTail() {
         // Remove node at tail
+        const removed = this.head.next
 
-        // Your code here
-
+        this.length --
+        return removed
         // Write your hypothesis on the time complexity of this method here
     }
 
