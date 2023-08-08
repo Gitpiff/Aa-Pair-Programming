@@ -48,8 +48,14 @@ class SinglyLinkedList {
 
     removeFromHead() {
         // Remove node at head
-
-        // Your code here
+        if(!this.head) {
+            return undefined
+        }
+        const removed = this.head
+        this.head = this.head.next
+        
+        this.length --
+        return removed
 
         // Write your hypothesis on the time complexity of this method here
     }
