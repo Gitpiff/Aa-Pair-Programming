@@ -56,7 +56,7 @@ describe('Hash table methods', () => {
 
   it('hash method returns first 8 characters of sha256 hash as an integer', () => {
 
-    // First 8 digits of sha256("A") are 0x559aead0
+    // First 8 digits of sha256("A") are 0xd559aea0
     expect(hashTable.hash("A")).to.equal(1436216016);
 
     // First 8 digits of sha256("B") are 0xdf7e70e

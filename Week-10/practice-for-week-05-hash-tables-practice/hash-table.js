@@ -14,11 +14,13 @@ class HashTable {
     this.count = 0
     this.capacity = numBuckets
     this.data = new Array(numBuckets).fill(null)
-    console.log(this.data)
+    //console.log(this.data)
   }
 
   hash(key) {
-    // Your code here
+    let sha = sha256(key).slice(0, 8);
+    return parseInt(sha, 16);
+
   }
 
   hashMod(key) {
