@@ -13,7 +13,7 @@ class HashTable {
   constructor(numBuckets = 4) {
     this.count = 0
     this.capacity = numBuckets
-    this.data = new Array(numBuckets).fill(null)
+    this.data = new Array(this.capacity).fill(null)
     //console.log(this.data)
   }
 
