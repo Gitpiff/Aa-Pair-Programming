@@ -11,7 +11,10 @@ class KeyValuePair {
 class HashTable {
 
   constructor(numBuckets = 4) {
-    // Your code here
+    this.count = 0
+    this.capacity = numBuckets
+    this.data = new Array(numBuckets).fill(null)
+    console.log(this.data)
   }
 
   hash(key) {
