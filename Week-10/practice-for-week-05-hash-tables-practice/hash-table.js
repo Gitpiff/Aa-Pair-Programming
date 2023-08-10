@@ -42,16 +42,13 @@ class HashTable {
   insertWithHashCollisions(key, value) {
     let index = this.hashMod(key);
 
-    if(!this.data[index]) {
-      this.data[index] = new KeyValuePair(key, value);
-      this.count++;
-    } else {
-      let node = new KeyValuePair(key, value);
-
-      node.next = this.head;
-      this.head = node;
-      this.count++;
+    let newNode = new KeyValuePair(key, value) //create new node
+    console.log(this.data[index])
+    if(this.data[index]) {              
+      newNode.next = this.data[index]
     }
+    this.data[index] = newNode                //store it in the data bucket location returned by hashMod(key)
+    this.count ++
   }
 
   insert(key, value) {
