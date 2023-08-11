@@ -32,6 +32,7 @@ class HashTable { // get O(1), set O(1), deleteKey O(1)
 
 
   insert(key, value) {
+    if(this.count / this.capacity > 0.7) this.resize()
     let index = this.hashMod(key) //Index to add at
 
     let oldPair = this.data[index] //check if key exists
@@ -99,31 +100,30 @@ class HashTable { // get O(1), set O(1), deleteKey O(1)
         current = current.next
       }
     }
-    return this.data
-
-
   }
 
 
   delete(key) {
     let index = this.hashMod(key) //Index to add at
 
-    let oldPair = this.data[index] //check if key exists
+    let currentPair = this.data[index] //check if key exists
+    let lastPair = null;
 
-    while (oldPair && oldPair.key !== key) { // this helps us find the pair that has the key
-
-      oldPair = oldPair.next
+    while (currentPair && currentPair.key !== key) { // this helps us find the pair that has the key
+      lastPair = currentPair
+      currentPair = lastPair.next
     }
 
-    if (oldPair) { //if there's an oldPair that matches the key
-      let current = this.data[index];
-      oldPair = current.next
-      console.log(oldPair);
+    if(!currentPair) {
+      return "Key not found"
     } else {
-      throw Error("Key not found")
+      if(!lastPair) {
+        this.data[index] = currentPair.next
+      } else {
+        lastPair.next = currentPair.next
+      }
+      this.count --
     }
-
-    this.count-- //update count of list by one
   }
 }
 
