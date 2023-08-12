@@ -61,10 +61,7 @@ Below is the NumSorter class that is to be refactored
 */
 class NumSorter {
   constructor() {
-    // this.numList = [];
-
-    // this.allowedNums = [];
-    //use a linked list instead of an empty array
+   
     this.numList = new LinkedList();
 
 		this.allowedNums = new Set();
@@ -111,12 +108,8 @@ class NumSorter {
 
   /* Returns the count of nums in numList */
   numCount() {
-    let count = 0;
-    while (this.numList[count] !== undefined) {
-    count++;
-    }
     
-    return count;
+    return this.numList.length
   }
 
   /*
@@ -127,7 +120,10 @@ class NumSorter {
     this.numList = new LinkedList();
 
     for (let i = 0; i <= amount; i++) {
-      this.addNumToBack(i)
+      //this.addNumToBack(i)
+      if(this.isNumAllowed(i)) {
+        this.numList.enqueue(i)
+      }
     }
     return this.numCount();
     }
