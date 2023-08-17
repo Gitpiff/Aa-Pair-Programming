@@ -25,31 +25,43 @@ class LetterRoom {
     constructor() {
         // create an empty queue
         // Hint: you may create helper classes in this file to use
-        // Your code here
+        this.head = null
+        this.tail = null 
+        this.length = 0
     }
 
     getLastBin() {
         // return the last bin added to the queue
         // if there are no bins in the queue, return null
-        // Your code here
+        return this.tail ? this.tail.value : null
     }
 
     getFirstBin() {
         // return the first bin added to the queue
         // if there are no bins in the queue, return null
-        // Your code here
+        return this.head ? this.head.value : null
     }
 
     numBins() {
         // returns the number of bins in the queue
-        // Your code here
+        return this.length
     }
 
     addBin() {
         // create a new bin and add it to the end of the queue
         // returns the newly created bin
         // WARNING: you cannot add properties to a LetterBin like .next
-        // Your code here
+       let newBin = new LetterBin()
+       let node = new Node(newBin)
+       
+       if(!this.head) {
+            this,head = node
+            this.tail = node
+       } else {
+        this.tail.next = node 
+        this.tail = node 
+       }
+       this.length ++
     }
 
     removeBin() {
