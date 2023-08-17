@@ -67,7 +67,12 @@ class LetterRoom {
     removeBin() {
         // remove the bin at the beginning of the queue
         // returns the removed bin
-        // Your code here
+        if(!this.head) {
+            return null
+        }
+
+        let oldHead = this.head
+        this.head = this.head.next
     }
 }
 
