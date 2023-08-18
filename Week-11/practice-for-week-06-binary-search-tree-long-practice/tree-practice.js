@@ -5,39 +5,154 @@ const { BinarySearchTree, TreeNode } = require('./binary-search-tree.js');
 // Practice problems on binary trees
 
 function findMinBST (rootNode) {
-  // Your code here
+  while(rootNode.left) {
+    rootNode = rootNode.left
+  }
+
+  return rootNode.val
 }
 
 function findMaxBST (rootNode) {
-  // Your code here
+  while(rootNode.right) {
+    rootNode = rootNode.right
+  }
+
+  return rootNode.val
 }
 
 function findMinBT (rootNode) {
-  // Your code here
+  const stack = [rootNode]
+  let min = rootNode.val
+
+  while(stack.length) {
+    let curr = stack.pop()
+
+   if(curr.val < min) min = curr.val
+   
+   if(curr.left) stack.push(curr.left)
+   if(curr.right)stack.push(curr.right)
+  }
+
+  return min
 }
 
 function findMaxBT (rootNode) {
-  // Your code here
+  const stack = [rootNode]
+  let max = rootNode.val
+
+  while(stack.length) {
+    let curr = stack.pop()
+
+   if(curr.val > max) max = curr.val
+   
+   if(curr.left) stack.push(curr.left)
+   if(curr.right)stack.push(curr.right)
+  }
+
+  return max
 }
 
 function getHeight (rootNode) {
-  // Your code here
-}
+  if(!rootNode) return -1
 
-function balancedTree (rootNode) {
-  // Your code here
+  const queue = [rootNode]
+  let height = - 1
+
+  while(queue.length) {
+    let count = queue.length
+    height ++
+
+    while(count > 0) {
+      let curr = queue.shift()
+
+      if(curr.left) queue.push(curr.left)
+      if(curr.right) queue.push(curr.right)
+      count --
+    }
+  }
+
+  return height
 }
 
 function countNodes (rootNode) {
-  // Your code here
+ const stack = [rootNode]
+ let count = 0
+
+ while(stack.length) {
+  let curr = stack.pop()
+  count ++
+
+  if(curr.left) stack.push(curr.left)
+  if(curr.right) stack.push(curr.right)
+ }
+
+ return count
 }
+
+
+function balancedTree (rootNode) {
+  const queue = [rootNode]
+
+  while(queue.length) {
+    let curr = queue.shift()
+    let diff = Math.abs(getHeight(curr.left) - getHeight(curr.right))
+
+    if(diff <= 1) {
+      if(curr.left) queue.push(curr.left)
+      if(curr.right) queue.push(curr.right)
+    } else {
+      return false
+    }
+  }
+
+  return true
+
+}
+
 
 function getParentNode (rootNode, target) {
-  // Your code here
+  if(rootNode.val === target) return null
+
+  const queue = [rootNode]
+
+  while(queue.length) {
+    let curr = queue.shift()
+    if(curr.left) {
+      if(curr.left.val === target) return curr
+      queue.push(curr.left)
+    }
+    if(curr.right) {
+      if(curr.right.val === target) return curr
+      queue.push(curr.right)
+    }
+    
+  }
 }
 
-function inOrderPredecessor (rootNode, target) {
-  // Your code here
+function inOrderPredecessor (rootNode, target) { 
+
+  let predecessor = null 
+
+  while(rootNode !== null) {
+    if(rootNode.val > target) {
+      rootNode = rootNode.left
+    } else if(rootNode.val < target) {
+      predecessor = rootNode
+      rootNode = rootNode.right
+    } else {
+      if(rootNode.left !== null) {
+        let temp = rootNode.left
+        while(temp.right !== null) {
+          temp = temp.right
+        }
+        predecessor = temp
+      }
+      break
+    }
+
+  }
+
+  return predecessor !== null ? predecessor.val : null
 }
 
 function deleteNodeBST(rootNode, target) {
