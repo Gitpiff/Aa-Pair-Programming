@@ -157,26 +157,54 @@ function inOrderPredecessor (rootNode, target) {
 
 function deleteNodeBST(rootNode, target) {
   // Do a traversal to find the node. Keep track of the parent
+  let parent = getParentNode(rootNode, target);
 
   // Undefined if the target cannot be found
+  if (parent === undefined) return undefined;
 
   // Set target based on parent
+  let targetNode;
+  let isLeft = false;
 
   // Case 0: Zero children and no parent:
-  //   return null
-
+  if (!parent) {
+    targetNode = rootNode;
+  } else if (parent.left && parent.left.val === target) {
+    targetNode = parent.left;
+    isLeft = true;
+  } else if (parent.right && parent.right.val === target) {
+    targetNode = parent.right;
+  } else {
+    throw new Error("Algorithm Error: This should never happen");
+  }
+  if (!parent && !targetNode.left && !targetNode.right) return null;
   // Case 1: Zero children:
   //   Set the parent that points to it to null
-
+  else if (!targetNode.left && !targetNode.right) {
+    if (isLeft) parent.left = null;
+    else parent.right = null;
+  }
   // Case 2: Two children:
   //  Set the value to its in-order predecessor, then delete the predecessor
-  //  Replace target node with the left most child on its right side, 
-  //  or the right most child on its left side.
-  //  Then delete the child that it was replaced with.
-
+  else if (targetNode.left && targetNode.right) {
+    let predecessor = inOrderPredecessor(rootNode, target);
+    deleteNodeBST(rootNode, predecessor);
+    //  Replace target node with the left most child on its right side,
+    //  or the right most child on its left side.
+    //  Then delete the child that it was replaced with.
+    targetNode.val = predecessor;
+  }
   // Case 3: One child:
   //   Make the parent point to the child
-
+  else {
+    if (targetNode.left) {
+      if (isLeft) parent.left = targetNode.left;
+      else parent.right = targetNode.left;
+    } else {
+      if (isLeft) parent.left = targetNode.right;
+      else parent.right = targetNode.right;
+    }
+  }
 }
 
 module.exports = {
