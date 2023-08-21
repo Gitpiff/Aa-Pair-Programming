@@ -1,5 +1,12 @@
 function ageSort(users) {
-  // Your code here
+  
+  // let sortedNames = []
+  // let smallestAge = users[0].age
+  // for (let i = 1; i < users.length; i ++) {
+  //   if(smallestAge > users[i].age)
+  //   smallestAge = users[i].age 
+  //   sortedNames.push[users[i].firstName]
+  // }
 }
 
 function oddEvenSort(arr) {
