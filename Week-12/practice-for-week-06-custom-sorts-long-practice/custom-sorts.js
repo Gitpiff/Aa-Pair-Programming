@@ -1,16 +1,16 @@
 function ageSort(users) {
   
-  // let sortedNames = []
-  // let smallestAge = users[0].age
-  // for (let i = 1; i < users.length; i ++) {
-  //   if(smallestAge > users[i].age)
-  //   smallestAge = users[i].age 
-  //   sortedNames.push[users[i].firstName]
-  // }
+  return users.sort((user1, user2) => user1.age - user2.age)
+
 }
 
 function oddEvenSort(arr) {
-  // Your code here
+
+  return arr.sort((a, b) => {
+    if (a % 2 === 1 && b % 2 === 0) return -1;
+    if (a % 2 === 0 && b % 2 === 1) return 1;
+    return a - b;
+  })
 }
 
 function validAnagrams(s, t) {
