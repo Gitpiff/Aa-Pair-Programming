@@ -14,15 +14,31 @@ function oddEvenSort(arr) {
 }
 
 function validAnagrams(s, t) {
-  // Your code here
+  const arrS = s.split("")
+  const arrT = t.split("")
+  //console.log(arrS, arrT)
+  const sortS = arrS.sort()
+  const sortT = arrT.sort()
+
+  return sortS.join("") === sortT.join("")
 }
 
 function reverseBaseSort(arr) {
-  // Your code here
+  //const arrLength = arr.length 
+  return arr.sort((a, b) => {
+    const aLength = a.toString().length 
+    const bLength = b.toString().length
+
+    if(aLength === bLength) {
+      return a - b 
+    } else {
+      return bLength - aLength
+    }
+  })
 }
 
 function frequencySort(arr) {
-  // Your code here
+  
 }
 
 module.exports = [
