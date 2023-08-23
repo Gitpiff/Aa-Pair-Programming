@@ -13,15 +13,22 @@ class SocialNetwork {
     this.users[nextID] = { id: nextID, name: name }
     this.follows[nextID] = new Set()
 
-    return nextID
+    return nextID;
   }
 
   getUser(userID) {
-    // Your code here
+
+    if (this.users[userID]){
+      return this.users[userID]
+    } else {
+      return null;
+    }
+
   }
 
   follow(userID1, userID2) {
-    // Your code here
+
+    
   }
 
   getFollows(userID) {
