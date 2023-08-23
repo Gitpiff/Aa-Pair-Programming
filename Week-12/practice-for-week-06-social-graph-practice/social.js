@@ -8,7 +8,12 @@ class SocialNetwork {
   }
 
   addUser(name) {
-    // Your code here
+    this.currentID ++ //1
+    let nextID = this.currentID
+    this.users[nextID] = { id: nextID, name: name }
+    this.follows[nextID] = new Set()
+
+    return nextID
   }
 
   getUser(userID) {
