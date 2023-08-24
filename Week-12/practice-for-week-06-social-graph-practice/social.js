@@ -19,7 +19,7 @@ class SocialNetwork {
   getUser(userID) {
 
     if (!this.users[userID]) return null;
-      return this.users[userID];
+    return this.users[userID];
   }
 
   follow(userID1, userID2) {
@@ -36,7 +36,7 @@ class SocialNetwork {
 
   getFollowers(userID) {
 
-    const followers = new Set ();
+    const followers = new Set();
 
     for (let id in this.follows) {
       if (this.follows[id].has(userID)) followers.add(+id);
@@ -46,7 +46,28 @@ class SocialNetwork {
 
   getRecommendedFollows(userID, degrees) {
 
-    
+    const queue = [[userID]];
+    const recommended = [];
+
+    const visited = new Set();
+    visited.add(userID);
+
+    while (queue.length) {
+      const path = queue.shift();
+      const currID = path[path.length - 1];
+
+      if (path.length > degrees + 2) break;
+      
+      if (path.length > 2) recommended.push(currID);
+
+      for (let follow of this.follows[currID]) {
+        if (!visited.has(follow)) {
+          visited.add(follow)
+          queue.push([...path, follow])
+        }
+      }
+    }
+    return recommended
   }
 }
 
