@@ -57,7 +57,7 @@ class SocialNetwork {
       const currID = path[path.length - 1];
 
       if (path.length > degrees + 2) break;
-      
+
       if (path.length > 2) recommended.push(currID);
 
       for (let follow of this.follows[currID]) {
@@ -67,8 +67,35 @@ class SocialNetwork {
         }
       }
     }
-    return recommended
+    return recommended;
   }
+  /*
+  const queue = [[userID]]
+    const recFollow = []
+    const visited = new Set([userID])
+
+
+    while (queue.length && degrees >= 0) {
+      const path = queue.shift()
+      const curID = path[path.length - 1]
+
+      if (path.length > 2) {
+        recFollow.push(curID)
+        degrees--
+      }
+
+      for (let follow of this.follows[curID]) {
+        if (!visited.has(follow)) {
+          visited.add(follow)
+          queue.push([...path, follow])
+        }
+      }
+    }
+
+    console.log(recFollow)
+    return recFollow
+  }
+  */
 }
 
 module.exports = SocialNetwork;
