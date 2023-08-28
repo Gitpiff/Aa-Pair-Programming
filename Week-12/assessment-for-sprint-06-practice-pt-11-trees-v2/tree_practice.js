@@ -33,7 +33,7 @@ function findMaxEachLevel(root) {
     const curr = queue.shift()
 
     if(maxes[curr.level]) {
-      maxes[curr.level] = Math.abs(curr.value, maxes[curr.level])
+      maxes[curr.level] = Math.max(curr.value, maxes[curr.level])
     } else {
       maxes.push(curr.value)
     }
@@ -41,8 +41,14 @@ function findMaxEachLevel(root) {
     if(curr.left) {
       curr.left.level = curr.level + 1
       queue.push(curr.left)
+    } 
+    if(curr.right) {
+      curr.right.level = curr.level + 1
+      queue.push(curr.right)
     }
   }
+  console.log(maxes)
+  return maxes
 
 }
 
