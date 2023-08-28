@@ -24,32 +24,26 @@ class TreeNode {
 // Expected Output -> [ 5, 7, 3, 9, 4 ]
 
 function findMaxEachLevel(root) {
-  const queue = [root];
-  const maxes = [];
+  const queue = [root]
+  const maxes = []
 
-  root.level = 0;
+  root.level = 0
 
-  while (queue.length) {
-      const curr = queue.shift();
-      console.log(curr)
+  while(queue.length) {
+    const curr = queue.shift()
 
-      if (maxes[curr.level]) {
-          maxes[curr.level] = Math.max(curr.value, maxes[curr.level]);
-      } else {
-          maxes.push(curr.value);
-      }
+    if(maxes[curr.level]) {
+      maxes[curr.level] = Math.abs(curr.value, maxes[curr.level])
+    } else {
+      maxes.push(curr.value)
+    }
 
-      if (curr.left) {
-          curr.left.level = curr.level + 1;
-          queue.push(curr.left);
-      }
-      if (curr.right) {
-          curr.right.level = curr.level + 1;
-          queue.push(curr.right);
-      }
+    if(curr.left) {
+      curr.left.level = curr.level + 1
+      queue.push(curr.left)
+    }
   }
 
-  return maxes;
 }
 
 
@@ -80,3 +74,66 @@ try {
 } catch (e) {
   module.exports = null;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const queue = [root];
+// const maxes = [];
+
+// root.level = 0;
+
+// while (queue.length) {
+//     const curr = queue.shift();
+//     console.log(curr)
+
+//     if (maxes[curr.level]) {
+//         maxes[curr.level] = Math.max(curr.value, maxes[curr.level]);
+//     } else {
+//         maxes.push(curr.value);
+//     }
+
+//     if (curr.left) {
+//         curr.left.level = curr.level + 1;
+//         queue.push(curr.left);
+//     }
+//     if (curr.right) {
+//         curr.right.level = curr.level + 1;
+//         queue.push(curr.right);
+//     }
+// }
+
+// return maxes;

@@ -56,17 +56,17 @@ function findNeighbors(node, matrix) {
     
 
     //Top Left                  Curr Value                  One less
-    if(row > 0 && col > 0 && Math.abs(currValue - matrix[row -1][col -1]) <= 1) {
+    if(row > 0 && col > 0 && Math.abs(currValue - matrix[row - 1][col - 1]) <= 1) {
         neighbors.push([row - 1, col - 1])
     }
 
     //Top                          
-    if(row > 0 && Math.abs(currValue - matrix[row -1][col]) <= 1) {
+    if(row > 0 && Math.abs(currValue - matrix[row - 1][col]) <= 1) {
         neighbors.push([row - 1, col])
     }
 
     //Top Right
-    if(row > 0 && col < cols - 1 && Math.abs(currValue - matrix[row -1][col + 1]) <= 1) {
+    if(row > 0 && col < cols - 1 && Math.abs(currValue - matrix[row - 1][col + 1]) <= 1) {
         neighbors.push([row - 1, col + 1])
     }
 
