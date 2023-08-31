@@ -1,4 +1,23 @@
 /* Your code here */
+#page-title {
+    font-weight: bold;
+}
+
+.pagenum {
+    position: absolute;
+    right: 10px;
+    font-size: small;
+}
+
+p {
+    text-align: justify;
+    margin: .75em 0;
+}
+
+pre {
+    margin: 100px auto;
+    width: fit-content;
+}
 
 /* ===== DO NOT EDIT BELOW THIS COMMENT ===== */
 
