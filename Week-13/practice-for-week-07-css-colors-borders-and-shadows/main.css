@@ -1,17 +1,20 @@
 .box1 {
   background-color: blueviolet;
+  border: solid blue 5px;
 }
 
 .box2 {
   background-color: greenyellow;
+  border: dotted red 2px;
+  border-radius: 5px;
 }
 
 .text1 {
-  background-color: blue;
+  background-color: #FFC300;
 }
 
 .text2 {
-  background-color: burlywood;
+  background-color: rgb(235, 62, 7);
 }
 
 .box3 {
