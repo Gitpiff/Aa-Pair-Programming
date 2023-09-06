@@ -51,6 +51,35 @@ body {
   font-weight: normal;
 }
 
+.tabbed-nav_container {
+  background-color: #f4f5f7;
+}
+
+.tabbed-nav__group {
+  border-bottom: 1px solid #dfe1e6;
+  display: flex;
+  justify-content: center;
+}
+
+.tabbed-nav__link {
+  background-color: white;
+  border: 1px solid #dfe1e6;
+  border-bottom: 0;
+  border-radius: 2px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 10px;
+  margin: 0 5px;
+  color: #172b4d;
+}
+
+@media screen and (min-width: 501px) {
+  .tabbed-nav__group, .tabbed-nav__link {
+    display: block;
+  }
+
+}
+
 .board-1 {
   background-image: url("./board-backgrounds/board-1-background.jpg");
 }
