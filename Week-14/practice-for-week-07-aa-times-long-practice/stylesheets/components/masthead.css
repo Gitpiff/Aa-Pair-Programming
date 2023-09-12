@@ -1,1 +1,46 @@
 /* Your code here */
+.masthead {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  
+}
+
+.masthead__menu-and-search {
+    display: flex;
+    grid-column: 1 / 3;
+    padding-left: 20px;
+}
+
+.masthead_actions {
+    display: flex;
+    grid-column-start: 3;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+
+.masthead__technologies {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: center;
+}
+
+.masthead_button_icons {
+    font-size: 11px;
+    padding: 7px 9px 7px 9px;
+}
+
+.masthead_button_icons:hover {
+    background-color: #f7f7f5;
+}
+
+
+/* Buttons:
+
+- background color: light blue
+- background color hover: blue
+- border has a radius of 3 pixels
+- font is bold, white, "arial, helvetica, sans-serif"
+- font size is 11
+- padding: 7 pixels vertical / 9 pixels horizontal
+- margin: 4 pixels horizontal
+- text is white and transformed to uppercase
+- background color transitions on hover over a duration or .3 seconds */

@@ -27,3 +27,21 @@ main {
   max-width: 1400px;
   padding: 0 40px;
 }
+
+header .masthead{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+/* * Buttons:
+
+- background color: light blue
+- background color hover: blue
+- border has a radius of 3 pixels
+- font is bold, white, "arial, helvetica, sans-serif"
+- font size is 11
+- padding: 7 pixels vertical / 9 pixels horizontal
+- margin: 4 pixels horizontal
+- text is white and transformed to uppercase
+- background color transitions on hover over a duration or .3 seconds */ 
