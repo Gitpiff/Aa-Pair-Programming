@@ -58,8 +58,8 @@ const server = http.createServer((req, res) => {
         <div>
           <h2>Created Dog:</h2>
           <h3>Name: ${dog.name}</h3>
-          <div>Pattern: ${dog.color}</div>
-          <div>Size: ${dog.age} years old</div>
+          <div>Color: ${dog.color}</div>
+          <div>Age: ${dog.age} years old</div>
           <div>Description: ${dog.description}</div>
         </div>
       ` : "<div>No dog created yet!</div>");
@@ -107,6 +107,26 @@ const server = http.createServer((req, res) => {
     }
 
     // Your code here
+    if(req.method === "POST" && req.url === "/cat") {
+      const {name, pattern, size, description} = req.body
+
+      cat = new Cat({name, pattern, size, description})
+      res.statusCode = 302
+      res.setHeader("Location", "/")
+      res.end()
+      return
+    }
+
+    if(req.method === "POST" && req.url === "/dog") {
+      const {name, color, age, description} = req.body
+
+      dog = new Dog({name, color, age, description})
+      res.statusCode = 302
+      res.setHeader("Location", "/")
+      res.end()
+      return
+    }
+
 
     res.statusCode = 404;
     res.end("Page Not Found");
