@@ -1,0 +1,72 @@
+Ask for a page that does not exist
+
+Request components:
+
+Method: GET
+URL: /non-existant
+Headers: none
+Body: none
+Predicted Response components:
+
+Status Code: 404 -Not Found-
+Headers:
+Content-Type: text/html
+Body: HTML page "Page not Found"
+
+***************************************************
+Ask for the products list page
+
+Method: GET
+URL: /products
+Headers: none
+Body: none
+Predicted Response components:
+
+Status Code: 200
+Headers:
+Content-Type: text/html
+Body: HTML page with a list of links to each product
+
+***************************************************
+Ask for the product detail page 
+Method: GET
+URL: /products/:productId
+Headers: none
+Body: none
+Predicted Response components:
+
+Status Code: 200
+Headers:
+Content-Type: text/html
+Body: HTML page with details of the product
+
+****************************************************
+Ask for the create new product page
+Method: GET
+URL: /products/new
+Headers: Content-Type: text/html
+Body: none
+Predicted Response components:
+
+Status Code: 200
+Headers:
+Content-Type: text/html
+Body: HTML page with a form to create a new product
+
+*****************************************************
+Submit a new product
+Method: POST
+URL: /products
+Headers: Content-Type: application/x-wwww-form-urlencoded
+Body: name, description, price, categories
+Predicted Response components:
+
+Status Code: 302
+Headers: Location:/products/:productId
+Content-Type: text/html
+Body: none
+
+******************************************************
+
+
+
