@@ -89,11 +89,25 @@ const server = http.createServer((req, res) => {
     // Phase 1: GET /dogs
     if (req.method === 'GET' && req.url === '/dogs') {
       // Your code here
+      const htmlPage = fs.readFileSync("./views/dogs.html", "utf-8")
+
+      const dogsList = dogs.map(dog => `<li>${dog.name}</li>`)
+
+      const replaced = htmlPage.replace(/#{dogsList}/g, dogsList.join(""))
+
+      res.statusCode = 200
+      res.setHeader("Content-Type", "text/html")
+
+      return res.end(replaced)
     }
 
     // Phase 2: GET /dogs/new
     if (req.method === 'GET' && req.url === '/dogs/new') {
       // Your code here
+      const htmlPage = fs.readFileSync("./views/create-dog.html", "utf-8")
+      res.statusCode = 200
+      res.setHeader("Content-Type", "text/html")
+      return res.end(htmlPage)
     }
 
     // Phase 3: GET /dogs/:dogId
@@ -103,6 +117,13 @@ const server = http.createServer((req, res) => {
         const dogId = urlParts[2];
         const dog = dogs.find(dog => dog.dogId === Number(dogId));
         // Your code here
+        const htmlPage = fs.readFileSync("./views/dog-details.html", "utf-8")
+        if(dog){
+          const resBody = htmlPage.replace(/#{name}/g, dog.name).replace(/#{age}/g, dog.age)
+          res.statusCode = 200
+          res.setHeader("Content-Type", "text/html")
+          return res.end(resBody)
+        }
       }
     }
 
@@ -143,6 +164,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-const port = 5000;
+const port = 9000;
 
 server.listen(port, () => console.log('Server is listening on port', port));

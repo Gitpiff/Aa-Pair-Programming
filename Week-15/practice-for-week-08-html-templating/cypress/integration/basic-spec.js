@@ -1,7 +1,7 @@
 describe("Phase 1: GET /dogs", function () {
 
     before(function () {
-        cy.visit("localhost:5000/dogs", {failOnStatusCode: false});
+        cy.visit("localhost:9000/dogs", {failOnStatusCode: false});
     });
 
     it("displays the names of each of the dogs on the server", function () {
@@ -15,7 +15,7 @@ describe("Phase 1: GET /dogs", function () {
 describe("Phase 2: GET /dogs/new", function () {
 
     before(function () {
-        cy.visit("localhost:5000/dogs/new", {failOnStatusCode: false});
+        cy.visit("localhost:9000/dogs/new", {failOnStatusCode: false});
     });
 
     it("displays the form to add a new dog to the server data", function () {
