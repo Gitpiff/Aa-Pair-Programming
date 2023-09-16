@@ -34,6 +34,14 @@ const server = http.createServer((req, res) => {
 
     /* ======================== ROUTE HANDLERS ========================== */
     // Phase 1: GET /
+    if(req.method === "GET" && req.url === "/") {
+      const htmlFile = fs.readFileSync("./views/new-player.html", "utf-8")
+
+      const resBody = htmlFile.replace(/#{availableRooms}/g, world.availableRoomsToString())
+      res.statusCode = 200
+      res.setHeader("Content-Type", "text/html")
+      return res.end(resBody)
+    }
 
     // Phase 2: POST /player
 
@@ -47,6 +55,6 @@ const server = http.createServer((req, res) => {
   })
 });
 
-const port = 5000;
+const port = 9000;
 
 server.listen(port, () => console.log('Server is listening on port', port));
