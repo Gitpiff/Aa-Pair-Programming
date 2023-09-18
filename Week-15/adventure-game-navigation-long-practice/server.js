@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
       const urlParts = req.url.split("/");
       const roomId = urlParts[2];
       if (urlParts.length === 3 && roomId) {
-        if (roomId == player.currentRoom.id) {
+        if (roomId === player.currentRoom.id) {
           const room = player.currentRoom;
 
           const htmlFile = fs.readFileSync("./views/room.html", "utf-8");
@@ -86,6 +86,17 @@ const server = http.createServer((req, res) => {
     }
 
     // Phase 4: GET /rooms/:roomId/:direction
+    if(req.method === "GET" && req.url.startsWith("/rooms")) {
+      const urlParts = req.url.split("/")
+      const roomId = urlParts[2]
+      const direction = urlParts[3]
+
+      if(urlParts.length === 4 && roomId) {
+        if(roomId === player.currentRoom.id) {
+          const nextRoom = player.move(direction)
+        }
+      }
+    }
 
     // Phase 5: POST /items/:itemId/:action
 
