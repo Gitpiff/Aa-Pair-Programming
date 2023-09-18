@@ -5,7 +5,7 @@ function stretch(timeLeft) {
     
     if(timeLeft < 1000) {
       //console.log("Error: you dont have enough time to stretch")
-      reject("Error: you dont have enough time to stretch")
+      reject("you dont have enough time to stretch")
     }
     timeLeft -= 1000
     setTimeout(() => {
@@ -25,7 +25,7 @@ function runOnTreadmill(timeLeft) {
     
     if(timeLeft < 500) {
       //console.log("Error:  you dont have enough time to run on treadmill")
-      reject("Error:  you dont have enough time to run on treadmill")
+      reject("you dont have enough time to run on treadmill")
     }
     timeLeft -= 500
     setTimeout(() => {
@@ -44,7 +44,7 @@ function liftWeights(timeLeft) {
     
     if(timeLeft < 2000) {
       //console.log("Error:  you dont have enough time to run on treadmill")
-      reject("Error:  you dont have enough time to lift weights")
+      reject("you dont have enough time to lift weights")
     }
     timeLeft -= 2000
     setTimeout(() => {
