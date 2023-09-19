@@ -30,9 +30,9 @@ function liftWeights() {
 async function workout() {
   try {
     await stretch()
-      .then(runOnTreadmill)
-      .then(liftWeights)
-      .then(() => console.log("done working out"))
+    await runOnTreadmill()
+    await liftWeights()
+    console.log("done working out")
   }
   catch(err) {
     console.log("rejected because of ", err)
