@@ -81,7 +81,16 @@ const server = http.createServer((req, res) => {
     if (req.method === 'POST' && req.url === '/dogs') {
       const { name, age } = req.body;
       // Your code here
-      return res.end();
+
+      const dogId = getNewDogId()
+
+      const newDog = {dogId, name, age}
+      if(req.body){
+        res.statusCode = 201
+        res.setHeader("Content-Type",'application/json')
+
+      }
+      return res.end(JSON.stringify(newDog));
     }
 
     // PUT or PATCH /dogs/:dogId
@@ -90,8 +99,15 @@ const server = http.createServer((req, res) => {
       if (urlParts.length === 3) {
         const dogId = urlParts[2];
         // Your code here
+        const { name, age } = req.body;
+        const currDog = dogs.find((dog) => dog.dogId === JSON.parse(dogId))
+        if(currDog) {
+          name = currDog.name
+          age = currDog.age
+          res.setHeader("Content-Type",'application/json')
+          return res.end();
+        }
       }
-      return res.end();
     }
 
     // DELETE /dogs/:dogId
