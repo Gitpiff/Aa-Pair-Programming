@@ -54,11 +54,18 @@ const server = http.createServer((req, res) => {
     // GET /dogs
     if (req.method === 'GET' && req.url === '/dogs') {
       // Your code here
-      const dogsString = JSON.stringify(dogs)
-      console.log(dogsString)
-      res.statusCode = 200
-      res.setHeader("Content-Type", "application/json")
-      return res.end(dogsString);
+      // const dogsString = JSON.stringify(dogs)
+      // //console.log(dogsString)
+      // res.statusCode = 200
+      // res.setHeader("Content-Type", "application/json")
+      // return res.end(dogsString);
+
+      //GABES RUN THROUGH//
+
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json");
+      res.write(JSON.stringify(dogs))
+      return res.end();
     }
 
     // GET /dogs/:dogId
@@ -67,14 +74,31 @@ const server = http.createServer((req, res) => {
       if (urlParts.length === 3) {
         const dogId = urlParts[2];
         // Your code here
-        const currDog = dogs.find((dog) => dog.dogId === JSON.parse(dogId))
-        //console.log(dogs.find(dogId))
-        if(currDog) {
-          res.statusCode = 200
-          res.setHeader("Content-Type", "application/json")
-          return res.end(JSON.stringify(currDog));
+        // const currDog = dogs.find((dog) => dog.dogId === JSON.parse(dogId))
+        // //console.log(dogs.find(dogId))
+        // if(currDog) {
+        //   res.statusCode = 200
+        //   res.setHeader("Content-Type", "application/json")
+        //   return res.end(JSON.stringify(currDog));
+        // }
+
+        //GABES RUN THROUGH//
+
+        const resDog = dogs.find(ele => ele.dogId === Number(dogId));
+
+        if (!resDog) {
+          res.statusCode = 404;
+          res.setHeader("Content-Type", "application/json");
+          res.write(JSON.stringify("Dog not found :("));
+
+          return res.end();
         }
+
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.write(JSON.stringify(resDog));
       }
+      return res.end();
     }
 
     // POST /dogs
@@ -82,32 +106,67 @@ const server = http.createServer((req, res) => {
       const { name, age } = req.body;
       // Your code here
 
-      const dogId = getNewDogId()
+      // const dogId = getNewDogId()
 
-      const newDog = {dogId, name, age}
-      if(req.body){
-        res.statusCode = 201
-        res.setHeader("Content-Type",'application/json')
+      // const newDog = {dogId, name, age}
+      // if(req.body){
+      //   res.statusCode = 201
+      //   res.setHeader("Content-Type",'application/json')
 
-      }
-      return res.end(JSON.stringify(newDog));
+      // }
+      // return res.end(JSON.stringify(newDog));
+
+      //GABES RUN THROUGH//
+
+      const newDog = { dogId: getNewDogId(), name, age };
+
+      dogs.push(newDog);
+
+      res.statusCode = 201;
+      res.setHeader("Content-Type", "application/json");
+      res.write(JSON.stringify(newDog));
+
+      return res.end();
     }
 
     // PUT or PATCH /dogs/:dogId
-    if ((req.method === 'PUT' || req.method === 'PATCH')  && req.url.startsWith('/dogs/')) {
+    if ((req.method === 'PUT' || req.method === 'PATCH') && req.url.startsWith('/dogs/')) {
       const urlParts = req.url.split('/');
       if (urlParts.length === 3) {
         const dogId = urlParts[2];
         // Your code here
-        const { name, age } = req.body;
-        const currDog = dogs.find((dog) => dog.dogId === JSON.parse(dogId))
-        if(currDog) {
-          name = currDog.name
-          age = currDog.age
-          res.setHeader("Content-Type",'application/json')
+        // const { name, age } = req.body;
+        // const currDog = dogs.find((dog) => dog.dogId === JSON.parse(dogId))
+        // if(currDog) {
+        //   name = currDog.name
+        //   age = currDog.age
+        //   res.setHeader("Content-Type",'application/json')
+        //   return res.end();
+        // }
+
+        //GABES RUN THROUGH//
+
+        const resDog = dogs.find(ele => ele.dogId === Number(dogId));
+
+        if (!resDog) {
+          res.statusCode = 404;
+          res.setHeader("Content-Type", "application/json");
+          res.write(JSON.stringify("Dog not found :("));
+
           return res.end();
-        }
+        };
+
+        const { name, age } = req.body;
+
+        resDog.name = name || resDog.name;
+        resDog.age = age ? age : resDog.age;
+
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json")
+        res.write(JSON.stringify(resDog));
+
       }
+      return res.end();
     }
 
     // DELETE /dogs/:dogId
@@ -116,6 +175,20 @@ const server = http.createServer((req, res) => {
       if (urlParts.length === 3) {
         const dogId = urlParts[2];
         // Your code here
+        const dogIndex = dogs.findIndex(ele => ele.dogId === Number(dogId));
+
+        if (dogIndex === -1) {
+          res.statusCode = 404;
+          res.setHeader("Content-Type", "application/json");
+          res.write(JSON.stringify("Dog not found :("));
+
+          return res.end();
+        };
+
+        dogs.splice(dogIndex, 1);
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.write(JSON.stringify({ message: "Successfully deleted"}))
       }
       return res.end();
     }
@@ -130,8 +203,8 @@ const server = http.createServer((req, res) => {
 
 
 if (require.main === module) {
-    const port = 8000;
-    server.listen(port, () => console.log('Server is listening on port', port));
+  const port = 8000;
+  server.listen(port, () => console.log('Server is listening on port', port));
 } else {
-    module.exports = server;
+  module.exports = server;
 }
