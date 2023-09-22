@@ -85,14 +85,14 @@ const server = http.createServer((req, res) => {
         //GABES RUN THROUGH//
 
         const resDog = dogs.find(ele => ele.dogId === Number(dogId));
+///OPTIONAL ERROR HANDLING ISNT REQUIRED TO PASS SPECS//
+        // if (!resDog) {
+        //   res.statusCode = 404;
+        //   res.setHeader("Content-Type", "application/json");
+        //   res.write(JSON.stringify("Dog not found :("));
 
-        if (!resDog) {
-          res.statusCode = 404;
-          res.setHeader("Content-Type", "application/json");
-          res.write(JSON.stringify("Dog not found :("));
-
-          return res.end();
-        }
+        //   return res.end();
+        // }
 
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
@@ -147,14 +147,14 @@ const server = http.createServer((req, res) => {
         //GABES RUN THROUGH//
 
         const resDog = dogs.find(ele => ele.dogId === Number(dogId));
+///OPTIONAL ERROR HANDLING ISNT REQUIRED TO PASS SPECS//
+        // if (!resDog) {
+        //   res.statusCode = 404;
+        //   res.setHeader("Content-Type", "application/json");
+        //   res.write(JSON.stringify("Dog not found :("));
 
-        if (!resDog) {
-          res.statusCode = 404;
-          res.setHeader("Content-Type", "application/json");
-          res.write(JSON.stringify("Dog not found :("));
-
-          return res.end();
-        };
+        //   return res.end();
+        // };
 
         const { name, age } = req.body;
 
@@ -176,14 +176,14 @@ const server = http.createServer((req, res) => {
         const dogId = urlParts[2];
         // Your code here
         const dogIndex = dogs.findIndex(ele => ele.dogId === Number(dogId));
+///OPTIONAL ERROR HANDLING ISNT REQUIRED TO PASS SPECS//
+        // if (dogIndex === -1) {
+        //   res.statusCode = 404;
+        //   res.setHeader("Content-Type", "application/json");
+        //   res.write(JSON.stringify("Dog not found :("));
 
-        if (dogIndex === -1) {
-          res.statusCode = 404;
-          res.setHeader("Content-Type", "application/json");
-          res.write(JSON.stringify("Dog not found :("));
-
-          return res.end();
-        };
+        //   return res.end();
+        // };
 
         dogs.splice(dogIndex, 1);
         res.statusCode = 200;
