@@ -9,3 +9,31 @@ if (!fetch) {
  ******************************************************************************/
 
 // Your code here
+  //.then() solution
+// fetch("/colors/1", {
+//   method: "PUT",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({
+//     color: "green",
+//   })
+// })
+//   .then((res) => res.json())
+//   .then((data) => console.log(data))
+
+  //async solution
+(async function () {
+  const res = await fetch("/colors/1", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      color: "green",
+    })
+  })
+
+  const data = await res.json()
+  console.log(data)
+})()
