@@ -1,0 +1,116 @@
+Get All The Artists
+
+Request components:
+    -Method: GET
+    -URL: /artists 
+    -Headers: none 
+    -Body: none 
+
+Response components:
+    -Status Code: 200
+    -Headers: {
+        "Content-Type" : "application/json"
+    }
+    -Body: [
+        {
+            artistId: 1,
+            name: Red Hot Chili Peppers
+        }
+    ]
+
+--------------------------------------------------------------------------------------------------------------------------------
+Get a specific artist's details based on artistId
+
+Request components:
+    -Method: GET
+    -URL: /artists/artistId 
+    -Headers: none 
+    -Body: none 
+
+Response components:
+    -Status Code: 200
+    -Headers: {
+        "Content-Type" : "application/json"
+    }
+    -Body: [
+        {
+            "name": "Red Hot Chili Peppers",
+            "artistId": 1,
+            "albums": [
+                {
+                    "name": "Stadium Arcadium",
+                    "albumId": 1,
+                    "artistId": 1
+                }
+            ]
+        }
+    ]
+
+--------------------------------------------------------------------------------------------------------------------------------
+Add an Artist 
+
+Request components:
+    -Method: POST
+    -URL: /artists/ 
+    -Headers: {
+        "Content-Type" : "application/json"
+    } 
+    -Body: {
+            "name": "Luis Miguel",
+            "artistId": 2
+    }
+
+Response components:
+    -Status Code: 201  //Created
+    -Headers: {
+        -Content-Type: application/json
+    }
+    -Body: {
+        "name": "Luis Miguel",
+        "artistId": 2
+    }
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Edit a specified Artist by artistId 
+
+Request components:
+    -Method: PUT
+    -URL: /artists/artistId 
+    -Headers: {
+        "Content-Type" : "application/json"
+    } 
+    -Body: {
+            "name": "Miguel Luis",
+            "artistId": 2
+    }
+
+Response components:
+    -Status Code: 200
+    -Headers: {
+        -Content-Type: application/json
+    }
+    -Body: { 
+        "name": "Miguel Luis",
+        "artistId": 2,
+        "updatedAt" : "editeddate"
+    }
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Delete a specified Artist by artistId 
+
+Request components:
+    -Method: DELETE
+    -URL: /artists/artistId 
+    -Headers: false
+    -Body: false
+
+Response components:
+    -Status Code: 200
+    -Headers: {
+        "Content-Type" : "application/json"
+    }
+    -Body: {
+        "message": "Sucessfully deleted"
+    }
