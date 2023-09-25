@@ -37,3 +37,14 @@ if (!fetch) {
   const data = await res.json()
   console.log(data)
 })()
+
+  //Gabe's Solution
+let body = JSON.stringify({"color": "green"})
+
+let headers = {
+  "Content-Type": "application/json"
+}
+
+fetch("/colors/1", {method: "PUT", headers, body})
+.then(res => res.json())
+.then(resBody => console.log(resBody))
