@@ -114,3 +114,98 @@ Response components:
     -Body: {
         "message": "Sucessfully deleted"
     }
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Get all albums of a specific Artist based on artistId 
+
+Request components:
+    -Method: GET
+    -URL: /artists/artistId/albums
+    -Headers: false
+    -Body: false
+
+Response components:
+    -Status Code: 200
+    -Headers: {
+        "Content-Type" : "application/json"
+    }
+    -Body: [
+        {
+            "name": "Stadium Arcadium",
+            "albumId": 1,
+            "artistId": 1
+        }
+    ]
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Get a specific album's details based on albumId 
+
+Request components:
+    -Method: GET
+    -URL: /albums/albumId
+    -Headers: false
+    -Body: false
+
+Response components:
+    -Status Code: 200
+    -Headers: {
+        "Content-Type" : "application/json"
+    }
+    -Body: {
+            "name": "Stadium Arcadium",
+            "albumId": 1,
+            "artistId": 1,
+            "artist": {
+            "name": "Red Hot Chili Peppers",
+            "artistId": 1
+        },
+        "songs": [
+        {
+            "name": "Dani California",
+            "lyrics": "......",
+            "trackNumber": 1,
+            "songId": 1,
+            "createdAt": "2023-09-23T19:40:08.000Z",
+            "updatedAt": "2023-09-23T19:40:08.000Z",
+            "albumId": 1
+        }
+    ]
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+Add an album to a specific artist based on artistId
+
+Request components:
+    -Method: POST
+    -URL: artists/artistId/albums
+    -Headers: false
+    -Body: false
+
+Response components:
+    -Status Code: 200
+    -Headers: {
+        "Content-Type" : "application/json"
+    }
+    -Body: {
+            "name": "Stadium Arcadium",
+            "albumId": 1,
+            "artistId": 1,
+            "artist": {
+            "name": "Red Hot Chili Peppers",
+            "artistId": 1
+        },
+        "songs": [
+        {
+            "name": "Dani California",
+            "lyrics": "......",
+            "trackNumber": 1,
+            "songId": 1,
+            "createdAt": "2023-09-23T19:40:08.000Z",
+            "updatedAt": "2023-09-23T19:40:08.000Z",
+            "albumId": 1
+        }
+    ]
+}
