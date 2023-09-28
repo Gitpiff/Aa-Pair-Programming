@@ -21,10 +21,12 @@ add.addEventListener("click", async () => {
         //create figure tag
         const figure = document.createElement("figure")
         li.appendChild(figure)
+
         //create img tag
         const image = document.createElement("img")
         image.src = url
         console.log(image.src)
+
         //create figcaption tag
         const caption = document.createElement("figcaption")
         caption.innerHTML = breed
@@ -59,10 +61,16 @@ const removeLast = document.getElementById("remove-last");
 removeLast.addEventListener("click", () => {
     /*-------------------- Select the last dog card ----------------------- */
     // Your code here
+    //dogList is an array formed by the <li> tags HTML Collection
+    //Get the list
     const dogList = document.getElementsByTagName("li")
+    //index the last item of the dogs array and store it in a variable
     const removed = dogList[dogList.length - 1]
-    //console.log(deleteLast)
     /*-------------------- Remove the last dog card ----------------------- */
     // Your code here
     removed.remove()
 });
+
+
+//getElements returns a HTML Collection
+//querySelector returns a node list
