@@ -1,4 +1,4 @@
-body {
+.header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,4 +10,7 @@ body {
 .cat-img{
     width: 500px;
     height: 500px;
+}
+.cat-btn {
+    margin-bottom: 10px;
 }
