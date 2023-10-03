@@ -1,4 +1,4 @@
-import { resetScore } from './score.js';
+import { resetScore, vote, restoreScore } from './score.js';
 import { resetComments } from './comments.js';
 
 export const createMainContent = () => {
@@ -37,6 +37,7 @@ const fetchImage = async () => {
 
         // After the image is finished loading, reset the score and comments
         kittenImg.addEventListener('load', () => {
+            vote()
             resetScore();
             resetComments();
         });
@@ -67,4 +68,5 @@ const restoreImage = () => {
     } else {
         fetchImage();
     }
+    //restoreScore()
 }
