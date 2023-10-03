@@ -1,18 +1,44 @@
 /* ============================== PHASE 1 + 2 ============================== */
 
+const findCookieVal = (cookie) => {
+    const allCookies = document.cookie
+    const cookieVal = ""
+
+    let matchedCookie = allCookies.split("; ").find(ele => ele.indexOf(cookie) === 0)
+
+    if(matchedCookie) {
+        cookieVal = matchedCookie.split("=")[1]
+    }
+
+    return cookieVal
+}
+
+
 // For storing user's theme selection in cookies
 function storeTheme(themeName) {
     // Your code here
+    //const nameCookie = `theme=${themeName}`
+    document.cookie = `"theme=${themeName}; max-age=10`
 }
 
 // For restoring theme from cookies, if selected by the user in the past
 function restoreTheme() {
     // Your code here
+    // const theme = document.cookie.split("=")
+    // //console.log(theme)
+    // setTheme(theme[1])
+    const cookie = document.cookie
+    const cookieVal = cookie.split("=")[1]
+    if(cookieVal) {
+        setTheme(cookieVal)
+    }
 }
 
 // For clearing theme selection from cookies (reset to default)
 function clearTheme() {
     // Your code here
+    //document.cookie = "theme=; expires =" + new Date(0).toUTCString()
+    document.cookie = "theme=; max-age=0"
 }
 
 /* ================================ PHASE 3 ================================ */
@@ -20,16 +46,31 @@ function clearTheme() {
 // For storing user's display name in cookies
 function storeName(displayName) {
     // Your code here
+    document.cookie = `name=${displayName}`
 }
 
 // For restoring user's display name from cookies, if set in the past
 function restoreName() {
     // Your code here
+    //Zach's code
+    // const cookies = document.cookie.split(";")
+    // const cookie = cookies.find(ele => ele.includes("theme="))
+
+    // if (cookie) {
+    //     const themeName = cookie.split("=")[1]
+    //     document.documentElement.className = `theme-${themeName}`;
+    // }
+   const cookieVal = findCookieVal(displayName)
+   if(cookieVal) {
+    setInputValue("display-name", cookieVal)
+   }
+
 }
 
 // For clearing user's display name from cookies
 function clearName() {
     // Your code here
+    document.cookie = "name=; expires =" + new Date(0).toUTCString()
 }
 
 /* ========================================================================= */
