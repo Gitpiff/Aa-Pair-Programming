@@ -37,7 +37,6 @@ const fetchImage = async () => {
 
         // After the image is finished loading, reset the score and comments
         kittenImg.addEventListener('load', () => {
-            vote()
             resetScore();
             resetComments();
         });

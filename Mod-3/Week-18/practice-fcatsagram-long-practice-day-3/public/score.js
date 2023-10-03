@@ -14,6 +14,7 @@ export const createScoreContainer = () => {
 
     const container = document.querySelector(".container");
     container.appendChild(scoreContainer);
+
     restoreScore()
 };
 
@@ -91,7 +92,7 @@ const storeScore = (score) => {
 export const restoreScore = () => {
     const savedScore = localStorage.getItem("score")
 
-    if(savedScore){
+    if (savedScore) {
         // const score = document.querySelector('.score');
         // score.innerText = savedScore;
         updateScore(savedScore)
