@@ -18,7 +18,8 @@ export const createMainContent = () => {
     container.append(newKittenBtn);
     container.appendChild(img);
 
-    fetchImage();
+    restoreImage();
+    // fetchImage();
 };
 
 const fetchImage = async () => {
@@ -31,6 +32,8 @@ const fetchImage = async () => {
         const kittenImgUrl = kittenData[0].url;
         const kittenImg = document.querySelector("img");
         kittenImg.src = kittenImgUrl;
+
+        storeImage(kittenImgUrl);
 
         // After the image is finished loading, reset the score and comments
         kittenImg.addEventListener('load', () => {
@@ -50,3 +53,18 @@ const createNewKittenBtn = () => {
     newKittenBtn.addEventListener('click', fetchImage);
     return newKittenBtn;
 };
+
+const storeImage = (url) => {
+    localStorage.setItem("url", url)
+}
+
+const restoreImage = () => {
+    const newImgURL = localStorage.getItem("url")
+
+    if (newImgURL) {
+        const img = document.querySelector('img');
+        img.src = newImgURL;
+    } else {
+        fetchImage();
+    }
+}
