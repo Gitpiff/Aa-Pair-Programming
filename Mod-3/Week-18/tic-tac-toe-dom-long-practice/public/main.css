@@ -1,1 +1,63 @@
 /* Your code here */
+.board{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.header {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+
+#square-0, #square-1, #square-3, #square-4 {
+    display: grid;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+    align-content: center;
+    justify-content: center;
+}
+
+#square-2, #square-5 {
+    display: grid;
+    border-bottom: 3px solid black;
+    align-content: center;
+    justify-content: center;
+}
+
+#square-6, #square-7 {
+    display: grid;
+    border-right: 3px solid black;
+    align-content: center;
+    justify-content: center;
+}
+
+#square-8 {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 20px;
+}
+
+#new-game-btn {
+    grid-column: 1 / 2 ;
+    width: 50%;
+    margin: auto;
+}
+
+#give-up-btn {
+    grid-column: 3 / -1;
+    width: 50%;
+    margin: auto;
+}
