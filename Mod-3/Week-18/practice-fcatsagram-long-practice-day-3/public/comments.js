@@ -78,6 +78,8 @@ const submitComment = e => {
     const commentText = commentInput.value;
     createComment(commentText);
     commentInput.value = "";
+
+    storeComments(commentText)
 }
 
 const createComment = (commentText) => {
@@ -108,3 +110,17 @@ export const resetComments = () => {
     const comments = document.querySelector(".comments");
     Array.from(comments.children).forEach(child => child.remove());
 };
+
+const storeComments = (comment) => {
+    const currComments = localStorage.getItem("comments")
+
+    if (currComments) {
+        let parsedComments = JSON.parse(currComments)
+        parsedComments.push(comment)
+        localStorage.setItem("comments", JSON.stringify(parsedComments))
+    } else {
+        let commentArray = [];
+        commentArray.push(comment)
+        localStorage.setItem("comments", JSON.stringify(commentArray))
+    }
+}
