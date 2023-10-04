@@ -6,6 +6,7 @@ export const createCommentSection = () => {
 
     container.appendChild(commentForm);
     container.appendChild(commentsList);
+    restoreComments()
 };
 
 const createCommentsList = () => {
@@ -109,6 +110,7 @@ const createComment = (commentText) => {
 export const resetComments = () => {
     const comments = document.querySelector(".comments");
     Array.from(comments.children).forEach(child => child.remove());
+    removeAllComments()
 };
 
 const storeComments = (comment) => {
@@ -123,4 +125,21 @@ const storeComments = (comment) => {
         commentArray.push(comment)
         localStorage.setItem("comments", JSON.stringify(commentArray))
     }
+}
+
+const restoreComments = () => {
+    const savedComments = localStorage.getItem("comments")
+    console.log(savedComments)
+
+    if(savedComments) {
+        JSON.parse(savedComments).forEach(comment => {
+            createComment(comment)
+        })
+    } else {
+        localStorage.setItem("comments", JSON.stringify([]))
+    }
+}
+
+const removeAllComments = () => {
+    const allComments = document.query
 }
