@@ -22,6 +22,7 @@ window.onload = function () {
                 h1.innerText = `Winner: ${currPlayer}`
                 isGameOver = true;
                 newGame.disabled = false;
+                giveUp.disabled = true;
                 return
             }
         }
@@ -30,6 +31,7 @@ window.onload = function () {
             h1.innerText = 'Winner: None';
             isGameOver = true;
             newGame.disabled = false;
+            giveUp.disabled = true;
         }
     }
 
@@ -60,6 +62,8 @@ window.onload = function () {
     const newGame = document.querySelector('#new-game-btn')
     newGame.disabled = true;
 
+    const giveUp = document.querySelector('#give-up-btn')
+
     if (!isGameOver) {
         newGame.addEventListener('click', () => {
             cells.forEach(cell => cell.innerHTML = '');
@@ -67,6 +71,22 @@ window.onload = function () {
             isGameOver = false;
             currPlayer = 'X';
             newGame.disabled = true;
+            giveUp.disabled = false;
         })
     }
+
+    giveUp.addEventListener('click', () => {
+        if (!isGameOver) {
+            if (currPlayer === 'X') {
+                currPlayer = 'O';
+            } else {
+                currPlayer = 'X';
+            }
+        }
+
+        h1.innerText = `Winner: ${currPlayer}`;
+        isGameOver = true;
+        newGame.disabled = false;
+        giveUp.disabled = true;
+    })
 }
