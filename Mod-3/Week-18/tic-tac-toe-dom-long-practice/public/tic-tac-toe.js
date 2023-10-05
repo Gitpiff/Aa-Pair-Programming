@@ -21,6 +21,7 @@ window.onload = function () {
                 cells[a].innerHTML === cells[c].innerHTML) {
                 h1.innerText = `Winner: ${currPlayer}`
                 isGameOver = true;
+                newGame.disabled = false;
                 return
             }
         }
@@ -28,6 +29,7 @@ window.onload = function () {
         if ([...cells].every(cell => cell.innerHTML)) {
             h1.innerText = 'Winner: None';
             isGameOver = true;
+            newGame.disabled = false;
         }
     }
 
@@ -55,4 +57,16 @@ window.onload = function () {
 
     }
 
+    const newGame = document.querySelector('#new-game-btn')
+    newGame.disabled = true;
+
+    if (!isGameOver) {
+        newGame.addEventListener('click', () => {
+            cells.forEach(cell => cell.innerHTML = '');
+            h1.innerText = '';
+            isGameOver = false;
+            currPlayer = 'X';
+            newGame.disabled = true;
+        })
+    }
 }
