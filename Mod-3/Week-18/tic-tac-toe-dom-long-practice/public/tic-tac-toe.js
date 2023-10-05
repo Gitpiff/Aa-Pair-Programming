@@ -1,28 +1,27 @@
 window.onload = function () {
 
-    let playerTurn = "x";
+    let currPlayer = "x";
+    const cells = document.querySelectorAll('.cell');
 
-    const boardClass = document.getElementsByClassName('board')
+    cells.forEach(cell => {
+        cell.addEventListener('click', () =>
+            cellClicks(cell))
+    })
 
-    for (cell of boardClass) {
-        cell.children[0].addEventListener('click', e => {
+    const cellClicks = cell => {
+        if (!cell.innerHTML) {
+            if (currPlayer === 'x') {
+                const x = document.createElement("img")
+                x.src = "https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-x.svg"
+                cell.appendChild(x)
+                currPlayer = 'o'
+            } else {
+                const o = document.createElement("img")
+                o.src = "https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-o.svg"
+                cell.appendChild(o)
+                currPlayer = 'x'
+            }
+        }
 
-
-        })
     }
-
-
-    // const cell = document.getElementById("square-0")
-
-    // cell.addEventListener('click', e => {
-    //     let children = cell.children;
-
-    //     if (children.length === 0) {
-    //         const img = document.createElement("img")
-    //         img.src = "https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-x.svg"
-    //         cell.appendChild(img)
-    //     } else {
-    //         return;
-    //     }
-    // })
 }
