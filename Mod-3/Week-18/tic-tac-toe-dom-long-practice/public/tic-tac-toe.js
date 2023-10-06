@@ -89,4 +89,37 @@ window.onload = function () {
         newGame.disabled = false;
         giveUp.disabled = true;
     })
+
+    const saveGame = () => {
+        const gameState = {
+            newGame: newGame.disabled,
+            giveUp: giveUp.disabled,
+            currPlayer,
+            isGameOver,
+            h1Text: h1.innerText,
+            cells: [...cells].map(cell => cell.innerHTML)
+        };
+        localStorage.setItem('tic-tac-toe', JSON.stringify(gameState));
+    }
+
+    const loadGame = () => {
+        const gameState = JSON.parse(localStorage.getItem('tic-tac-toe'));
+        if (gameState) {
+            newGame.disabled = gameState.newGame;
+            giveUp.disabled = gameState.giveUp;
+            currPlayer = gameState.currPlayer;
+            isGameOver = gameState.isGameOver;
+            h1.innerText = gameState.h1Text;
+            console.log(gameState.cells)
+            gameState.cells.forEach((val, i) => {
+                cells[i].innerHTML = val;
+            });
+        }
+    }
+
+    loadGame();
+
+    window.addEventListener('beforeunload', () => {
+        saveGame();
+    })
 }
