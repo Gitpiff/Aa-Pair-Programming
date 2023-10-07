@@ -82,3 +82,11 @@ const problemFive = () => {
         }
     })
 }
+
+//Jame's Solution Problem 5
+const allSquares = document.querySelectorAll(".square")
+allSquares.forEach((square, i) => {
+    if(i >= 3 && i <= 5) {
+        square.remove()
+    }
+})
