@@ -10,6 +10,9 @@ the HTML or CSS files
 window.onload = function () {
     firstSq()
     secondSq()
+    problemThree()
+    fourthBox()
+    problemFive()
 }
 
 // Your code here
@@ -31,7 +34,6 @@ const secondSq = () => {
     secondSquare.style.backgroundColor = "orange"
     secondSquare.style.color = "white"
     secondSquare.style.border = "5px dashed black"
-
 }
 // Problem 3
 // Select all of the squares that have a class of "plus", and double their
@@ -40,6 +42,14 @@ const secondSq = () => {
 // font-size, and then double those sizes.
 
 // Your code here
+const problemThree = () => {
+    const plus = document.body.querySelectorAll(".plus")
+    console.log(plus)
+    plus.forEach(ele => {
+        ele.style.width = "100px"
+        ele.style.fontSize = "60px"
+    })
+}
 
 // Problem 4
 // Select the fourth box. Give it an id of "problem-four". Remove the class of
@@ -47,6 +57,12 @@ const secondSq = () => {
 // different color and shape due to code in the css file.
 
 // Your code here
+const fourthBox = () => {
+    const four = document.querySelector(".four")
+    four.id = "problem-four"
+    four.classList.remove("square")
+    four.className = "round"
+}
 
 // Problem 5
 // Use JavaScript to remove boxes 5, 6, and 7. Can you remove multiple boxes at
@@ -57,3 +73,12 @@ const secondSq = () => {
 // evaluate which one achieves the goal in the best way.
 
 // Your code here
+const problemFive = () => {
+    const removed = document.querySelectorAll(".square")
+    console.log(removed)
+    removed.forEach(box => {
+        if(box.innerText === "5" || box.innerText === "6" || box.innerText === "7") {
+            box.remove()
+        }
+    })
+}
