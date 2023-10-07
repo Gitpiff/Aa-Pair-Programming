@@ -7,19 +7,35 @@ the HTML or CSS files
 // Select the first square using its id. Add a button inside the square with the
 // number 1 on it.
 
-// Your code here
+window.onload = function () {
+    firstSq()
+    secondSq()
+}
 
+// Your code here
+const firstSq = () => {
+    const firstSquare = document.getElementById("problem-one")
+    firstSquare.innerText = ""
+    const button = document.createElement("button")
+    button.innerText = "1"
+    firstSquare.appendChild(button)
+}
 
 // Problem Two
 // Select the second square using class names. Change the background color to
 // orange, the text color white, and the border to 5px dashed black.
 
 // Your code here
+const secondSq = () => {
+    const secondSquare = document.querySelector(".two")
+    secondSquare.style.backgroundColor = "orange"
+    secondSquare.style.color = "white"
+    secondSquare.style.border = "5px dashed black"
 
-
+}
 // Problem 3
 // Select all of the squares that have a class of "plus", and double their
-// width. Increase the size of the font as well. 
+// width. Increase the size of the font as well.
 // HINT: Check the CSS file or use your Dev Tools to find the original width and
 // font-size, and then double those sizes.
 
