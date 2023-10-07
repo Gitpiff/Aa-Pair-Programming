@@ -111,4 +111,26 @@ window.addEventListener("DOMContentLoaded", () => {
   //Problem 8
   document.getElementById("bubble-maker")
   .addEventListener("click", e => e.stopPropagation())
+
+  //Problem 9
+  document.getElementById("dictionary-fetch")
+  .addEventListener("click", async e => {
+    let res = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/dictionary")
+    res = await res.json()
+    //console.log(res)
+    const word = res[0].word
+    const definition = res[0].meanings[0].definitions[0].definition
+    const results = document.getElementById("results-area")
+
+    const newUl = document.createElement("ul")
+    const wordLi = document.createElement("li")
+    const defLi = document.createElement("li")
+    wordLi.innerText = `Word: ${word}`
+    defLi.innerText = `Definition: ${definition}`
+
+    newUl.appendChild(wordLi)
+    newUl.appendChild(defLi)
+    results.appendChild(newUl)
+
+  })
 });
