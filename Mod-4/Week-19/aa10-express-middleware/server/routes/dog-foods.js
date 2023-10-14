@@ -1,4 +1,6 @@
 // ------------------------------  SERVER DATA ------------------------------  
+const express = require("express")
+const foodsRouter = express.Router({ mergeParams: true })
 
 let nextFoodId = 1;
 function getNewFoodId() {
@@ -60,3 +62,7 @@ const createFood = (req, res) => {
 // ------------------------------  ROUTER ------------------------------  
 
 // Your code here 
+foodsRouter.get("/", getFoodsByDogId)
+foodsRouter.post("/", validateFoodInfo, createFood)
+
+module.exports = foodsRouter

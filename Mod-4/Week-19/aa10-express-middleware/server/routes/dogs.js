@@ -1,6 +1,7 @@
 // ------------------------------  SERVER DATA ------------------------------  
 
 const express = require("express")
+const dogFood = require("./dog-foods")
 const router = express.Router()
 
 let nextDogId = 1;
@@ -88,6 +89,8 @@ const deleteDog = (req, res) => {
 // ------------------------------  ROUTER ------------------------------  
 
 // Your code here 
+router.use("/:dogId/foods", validateDogId, dogFood)
+
 router.get("/", getAllDogs)
 
 router.get("/:dogId", validateDogId, getDogById)
@@ -97,6 +100,8 @@ router.post("/", validateDogInfo, createDog)
 router.put("/:dogId", validateDogId, validateDogInfo, updateDog)
 
 router.delete("/:dogId", validateDogId, deleteDog)
+
+
 
 module.exports = router
 
