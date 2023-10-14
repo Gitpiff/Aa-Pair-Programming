@@ -104,6 +104,7 @@ app.get("/albums/:albumId", (req, res) => {
   res.json(getAlbumByAlbumId(1))
 })
 
+
 app.get("/artists/latest/albums", (req, res) => {
   res.json(getAlbumsForLatestArtist())
 })
