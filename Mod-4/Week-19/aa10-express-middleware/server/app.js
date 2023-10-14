@@ -17,7 +17,7 @@ app.use("/dogs", dogs)
 
 // For testing purposes, GET /
 app.get('/', (req, res) => {
-  req.ur
+  req.url
   res.json("Express server running. No content provided at root level. Please use another route.");
 });
 
@@ -50,5 +50,29 @@ app.use((err, req, res, next) => {
   }
 })
 
-const port = 9000;
+//Jame's Code For testing express-async-errors
+app.get("/test-err", async (req, res) => {
+  throw new Error("Hello Error")
+})
+
+app.use((req, res, next) => {
+  const error = new Error("REsource Not Found")
+  error.statusCode = 404
+  next(error)
+})
+
+app.use((err, req, res, next) => {
+  const isProduction = process.env.NODE_ENV === "production"
+  const status = err.statusCode
+  const response = {
+    statusCode: statusCode || 500,
+    message: err.message || "Something went wrong",
+    //stack: isProduction ? "production enviroment" : err.stack
+  }
+  if(!isProduction) response.stack = err.stack
+  console.error(err)
+  res.status(status).json(response)
+})
+
+const port = process.env.PORT;
 app.listen(port, () => console.log('Server is listening on port', port));
