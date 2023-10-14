@@ -36,8 +36,18 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  res.json({ERROR: err.message})
-  console.error(err.message)
+  if (process.env.NODE_ENV === "development") {
+    res.status(err.statusCode).json({
+      ERROR: err.message,
+      Status: err.statusCode || 500,
+      Stack: err.stack
+    })
+  } else {
+    res.status(err.statusCode).json({
+      ERROR: err.message,
+      Status: err.statusCode || 500
+    })
+  }
 })
 
 const port = 9000;
