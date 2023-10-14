@@ -1,4 +1,5 @@
 const express = require('express');
+const dogs = require("./routes/dogs")
 const app = express();
 app.use(express.json())
 require("express-async-errors")
@@ -11,6 +12,8 @@ const log = (req, res, next) => {
 }
 
 app.use(log)
+
+app.use("/dogs", dogs)
 
 // For testing purposes, GET /
 app.get('/', (req, res) => {
@@ -29,7 +32,6 @@ app.post('/test-json', (req, res, next) => {
 // For testing express-async-errors
 app.use((req, res, next) => {
   const err = new Error("The requested resource couldn't be found.")
-  res.status(404)
   next(err)
 });
 
