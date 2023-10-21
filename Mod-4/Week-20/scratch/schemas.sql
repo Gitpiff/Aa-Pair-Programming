@@ -6,3 +6,5 @@ CREATE TABLE users (
 
 INSERT INTO users (username, password)
 VALUES ("Whale", "password"), ("Pan", "Panison")
+-- DELETE FROM friends  WHERE id = 3;
+-- UPDATE users SET password = "passowrd", username = "X" WHERE id = 2;
