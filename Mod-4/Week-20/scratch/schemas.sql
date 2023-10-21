@@ -4,3 +4,5 @@ CREATE TABLE users (
     password CHAR(60) NOT NULL -- CHAR will only allow a string length of 60
 );
 
+INSERT INTO users (username, password)
+VALUES ("Whale", "password"), ("Pan", "Panison")
