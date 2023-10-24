@@ -35,10 +35,10 @@ CREATE TABLE instruments (
   type VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE musician_instrument (
+CREATE TABLE musician_instruments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   musician_id INTEGER,
   instrument_id INTEGER,
   FOREIGN KEY (musician_id) REFERENCES musicians(id)
   FOREIGN KEY (instrument_id) REFERENCES instruments(id)  
-)
+);

@@ -30,3 +30,6 @@ VALUES (1, 'Adam', 'Appleby', 1),
   (8, 'Camila', 'Nenci', 4),
   (9, 'Rosemarie', 'Affini', 5),
   (10, 'Victoria', 'Cremonesi', 5);
+
+--ON DELETE CASCADE makes it so when we delete the "parent" is also going to delete
+--all of the records in the child table that refer to the parent
