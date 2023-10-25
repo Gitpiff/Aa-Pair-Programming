@@ -1,0 +1,8 @@
+const path = require("path");
+
+module.exports = {
+  config: path.resolve("config", "database.js"), //renames config.json to config.database.js
+  "models-path": path.resolve("db", "models"),  //stores a model directory inside of a db directory
+  "seeders-path": path.resolve("db", "seeders"), 
+  "migrations-path": path.resolve("db", "migrations"),
+};
