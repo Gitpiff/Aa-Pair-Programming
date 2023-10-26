@@ -17,10 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      len: [2,20]
-    },
-  }, 
-  {
+      unique: true
+    }
+  }, {
     sequelize,
     modelName: 'Color',
   });
