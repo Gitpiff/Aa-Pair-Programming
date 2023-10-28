@@ -40,7 +40,7 @@ module.exports = {
       }
     ] 
 
-    await Tree.bulkCreate(biggestTrees, { validate: true })
+    await Tree.bulkCreate(biggestTrees, { validate: true });
     },
 
   down: async (queryInterface, Sequelize) => {
