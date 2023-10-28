@@ -15,13 +15,14 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */ //MODEL            //TABLE   //Columns:values
-   await Color.bulkCreate("Colors", [
-    { name: "red" },
-    { name: "blue" },
-    { name: "yellow" }
-   ])
-  },
+  
 
+      await Color.bulkCreate([
+       { name: "red" },
+       { name: "blue" },
+       { name: "yellow" }
+      ], { validate: true })
+  },
   async down (queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
