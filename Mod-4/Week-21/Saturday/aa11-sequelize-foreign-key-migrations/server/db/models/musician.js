@@ -11,6 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // Your code here 
+              //One to many relationship
+      //Model.prototype.belongsTo() Used for the child in a one to many relationship
+      Musician.belongsTo(models.Band, {
+        foreignKey: 'bandId'
+      })    
+
+      Musician.belongsToMany(models.Instrument, {
+        through: models.MusicianInstrument
+      })
     }
   };
   Musician.init({

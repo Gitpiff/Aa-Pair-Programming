@@ -16,6 +16,13 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      // bandId : {
+      //   type: Sequelize.INTEGER,
+      //   references: {
+      //     model: 'Bands',
+      //     key: 'id'   //Bands.id
+      //   }
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

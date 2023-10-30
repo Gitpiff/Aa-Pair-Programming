@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // Your code here 
+          //One to Many
+    //Model.prototype.hasMany() Used for the parent in a one to many relationship
+    Band.hasMany(models.Musician, {
+      foreignKey: 'bandId'
+    })
     }
   };
   Band.init({
