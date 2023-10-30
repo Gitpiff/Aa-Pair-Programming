@@ -19,7 +19,7 @@ const build = async () => {
     })
 
     await newPuppy.save()   //Commmits to db
-
+    
   } catch (err) {
     throw err;
   }
@@ -45,6 +45,7 @@ const create = async () => {
     breed: 'Bulldog',
     microchipped: true
    })
+
 
   } catch (err) {
     throw err;
