@@ -111,7 +111,7 @@ app.get('/musicians', async (req, res, next) => {
     if(!musicianFields || musicianFields.includes('all')) {
         includeAttr = {}
     } else if(musicianFields.includes('none')) {
-        includeAttr = {attributes: []}
+        includeAttr = {attributes: {exclude: ['firstName', 'lastName', 'bandId', 'id', 'createdAt']}}
     } else {
         includeAttr = {attributes: musicianFields}
     }
