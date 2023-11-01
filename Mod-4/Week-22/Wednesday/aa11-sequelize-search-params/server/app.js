@@ -39,12 +39,19 @@ app.get('/musicians', async (req, res, next) => {
     // End result: { where: { firstName: req.query.firstName } }
 
     // Your code here 
-    
+    const { firstName, lastName } = req.query
+
+    if(req.query.firstName) {
+        query.where.firstName = req.query.firstName
+    }
+
     // Add keys to the WHERE clause to match the lastName param, if it exists.
     // End result: { where: { lastName: req.query.lastName } }
     
     // Your code here 
-
+    if(req.query.lastName) {
+        query.where.lastName = req.query.lastName
+    }
 
     // STEP 2: WHERE clauses on the associated Band model
     // ?bandName=XX
@@ -53,7 +60,13 @@ app.get('/musicians', async (req, res, next) => {
     // End result: { include: [{ model: Band, where: { name: req.query.bandName } }] }
 
     // Your code here 
-
+    if(req.query.bandName) {
+        query.include.push({
+            model: Band, 
+            where: {
+                name: req.query.bandName
+        }})
+    }
 
     // STEP 3: WHERE Clauses on the associated Instrument model 
     // ?instrumentTypes[]=XX&instrumentTypes[]=YY
@@ -71,7 +84,17 @@ app.get('/musicians', async (req, res, next) => {
     */
 
     // Your code here 
-
+    if(req.query.instrumentTypes) {
+        query.include.push({
+            model: Instrument,
+            where: {
+                type: req.query.instrumentTypes,
+                through: {
+                    attributes: []
+                }
+            }
+        })
+    }
 
     // BONUS STEP 4: Specify Musician attributes to be returned
     // ?&musicianFields[]=XX&musicianFields[]=YY
@@ -83,7 +106,16 @@ app.get('/musicians', async (req, res, next) => {
     // If any other attributes are provided, only include those values
 
     // Your code here 
-
+    const { musicianFields } = req.query
+    let includeAttr
+    if(!musicianFields || musicianFields.includes('all')) {
+        includeAttr = {}
+    } else if(musicianFields.includes('none')) {
+        includeAttr = {attributes: []}
+    } else {
+        includeAttr = {attributes: musicianFields}
+    }
+    query = {...query, ...includeAttr}
 
     // BONUS STEP 5: Specify attributes to be returned
     // These additions should be included in your previously implemented 
@@ -137,5 +169,5 @@ app.get('/', (req, res) => {
 });
 
 // Set port and listen for incoming requests - DO NOT MODIFY
-const port = 5000;
+const port = 8000;
 app.listen(port, () => console.log('Server is listening on port', port));
