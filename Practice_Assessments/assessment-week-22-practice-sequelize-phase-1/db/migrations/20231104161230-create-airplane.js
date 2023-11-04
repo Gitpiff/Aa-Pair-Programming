@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      currNumPassengers: {
+      currentNumPassengers: {
         type: Sequelize.INTEGER
       },
       firstFlightDate: {

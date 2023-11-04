@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         max: 853
       }
     },
-    currNumPassengers: {
+    currentNumPassengers: {
       type: DataTypes.INTEGER,
       validate: {
         min: 0,
@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
             throw new Error('Current Number of Passengers Cannot Exceeds the Maximum Number')
           }
         },
-        checkService(currentPassengers) {
+        checkService() {
           if(this.inService === false) {
             throw new Error('Make sure the plane is in service')
           }
@@ -65,8 +65,8 @@ module.exports = (sequelize, DataTypes) => {
     firstFlightDate: {
       type: DataTypes.DATE,
       validate: {
-        isBefore: '2021-12-31',
-        isAfter: '2020-01-01'
+        isBefore: '2022-01-01',
+        isAfter: '2019-12-31'
       }
       
     }
