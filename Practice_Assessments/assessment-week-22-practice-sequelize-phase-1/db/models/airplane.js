@@ -50,12 +50,12 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         min: 0,
         max: 853,
-        checkMaxPassengers(currentNumPassengers) {
-          if(currentNumPassengers > this.maxNumPassengers) {
+        checkMaxPassengers(currentPassengers) {
+          if(currentPassengers > this.maxNumPassengers) {
             throw new Error('Current Number of Passengers Cannot Exceeds the Maximum Number')
           }
         },
-        checkService(currNumPassengers) {
+        checkService(currentPassengers) {
           if(this.inService === false) {
             throw new Error('Make sure the plane is in service')
           }

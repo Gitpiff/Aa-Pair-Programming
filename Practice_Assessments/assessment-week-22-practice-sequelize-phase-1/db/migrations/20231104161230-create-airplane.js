@@ -26,19 +26,20 @@ module.exports = {
         allowNull: false
       },
       currNumPassengers: {
-        type: Sequelize.INTEGER,
-        allowNull:false
+        type: Sequelize.INTEGER
       },
       firstFlightDate: {
         type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
     });
   },
