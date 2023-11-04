@@ -9,6 +9,56 @@ const { Superhero } = require('../models');
 
 const validSuperheros = [
   // Your code here 
+  {
+    name: 'CAPTAIN AMERICA',
+    alias: 'Steve Rogers',
+    affiliation: 'Avengers',
+    heightCm: 180,
+    isMutant: false,
+    race: 'human',
+    universe: 'Marvel',
+    releaseYear: 2020
+  },
+  {
+    name: 'CAPTAIN AMEERTERTRICA',
+    alias: 'Steve Rodgdfhdgers',
+    affiliation: 'Avengers',
+    heightCm: 180,
+    isMutant: false,
+    race: 'human',
+    universe: 'Marvel',
+    releaseYear: 2018
+  },
+  {
+    name: 'CAPTAIN AMERICFSDSDFSA',
+    alias: 'Steve Rogerdfsdfsds',
+    affiliation: 'Avengers',
+    heightCm: 180,
+    isMutant: false,
+    race: 'human',
+    universe: 'Marvel',
+    releaseYear: 2010
+  },
+  {
+    name: 'CAPTDASDASDAAIN AMERICA',
+    alias: 'Stevdsfdsfsdfe Rogers',
+    affiliation: 'Avengers',
+    heightCm: 180,
+    isMutant: false,
+    race: 'human',
+    universe: 'Marvel',
+    releaseYear: 2015
+  },
+  {
+    name: 'CAPTAIN AMESDFSFRICA',
+    alias: 'Stfsdfsdfeve Rogers',
+    affiliation: 'Avengers',
+    heightCm: 180,
+    isMutant: false,
+    race: 'human',
+    universe: 'Marvel',
+    releaseYear: 2021
+  },
 ];
 
 module.exports = {

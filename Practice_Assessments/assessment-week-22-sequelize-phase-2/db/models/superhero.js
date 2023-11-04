@@ -56,6 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: true,
       validate: {
         isHuman(value) {
+          console.log(value)
           if (value === true && this.race !== 'human') {
             throw new Error('Mutants must be human');
           }
