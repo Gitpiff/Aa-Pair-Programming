@@ -1,5 +1,7 @@
 'use strict';
 
+const { airlineCode } = require("../../test/data/airplane-values");
+
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**
@@ -13,6 +15,12 @@ module.exports = {
       type: "UNIQUE",
       name: "airlineCode_and_flightNumber_unique"
     })
+          //Solution 2
+    // await queryInterface.addIndex(
+    //   'Airplanes', 
+    //   ["airlineCode", "flightNumber"],
+    //   {unique: true}
+    //   )
   },
 
   async down (queryInterface, Sequelize) {
@@ -23,5 +31,11 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
     await queryInterface.removeConstraint('Airplanes', "airlineCode_and_flightNumber_unique")
+
+        //Solution 2
+    // await queryInterface.removeIndex(
+    //   "Airplanes",
+    //   ["airlineCode", "flightNumber"]
+    // )
   }
 };
