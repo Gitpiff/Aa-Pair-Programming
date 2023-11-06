@@ -119,3 +119,4 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Superhero;
 };
+
