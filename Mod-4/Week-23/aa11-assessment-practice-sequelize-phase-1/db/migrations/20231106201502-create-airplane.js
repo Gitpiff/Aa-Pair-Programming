@@ -22,9 +22,10 @@ module.exports = {
         allowNull: false
       },
       maxNumPassengers: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
-      currNumPassengers: {
+      currentNumPassengers: {
         type: Sequelize.INTEGER
       },
       firstFlightDate: {

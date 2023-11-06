@@ -9,7 +9,57 @@ const { Superhero } = require('../models');
 
 const validSuperheros = [
   // Your code here 
-];
+  {
+    name: 'CAPTAIN AMERICA',
+    alias: 'Steve Rogers',
+    affiliation: 'Avengers',
+    heightCm: 190,
+    isMutant: false,
+    race: 'human' ,
+    universe: 'Marvel',
+    releaseYear: 1950,
+  },
+  {
+    name: 'CPPTAIN AMERICA',
+    alias: 'SSve Rogers',
+    affiliation: 'Avengers',
+    heightCm: 190,
+    isMutant: false,
+    race: 'human' ,
+    universe: 'Marvel',
+    releaseYear: 1960,
+  },
+  {
+    name: 'CAPIN AMERICA',
+    alias: 'Steve Rers',
+    affiliation: 'Avengers',
+    heightCm: 190,
+    isMutant: false,
+    race: 'human' ,
+    universe: 'Marvel',
+    releaseYear: 1970,
+  },
+  {
+    name: 'CAPTTTAIN AMERICA',
+    alias: 'Steve sSSSSS',
+    affiliation: 'Avengers',
+    heightCm: 190,
+    isMutant: false,
+    race: 'human' ,
+    universe: 'Marvel',
+    releaseYear: 1980,
+  },
+  {
+    name: 'CAPTAIN AERICA',
+    alias: 'StVVVe Rogers',
+    affiliation: 'Avengers',
+    heightCm: 190,
+    isMutant: false,
+    race: 'human',
+    universe: 'Marvel',
+    releaseYear: 1990,
+  }
+]; 
 
 module.exports = {
   async up (queryInterface, Sequelize) {

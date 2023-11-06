@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
         max: 853
       }
     },
-    currNumPassengers: {
+    currentNumPassengers: {
       type: DataTypes.INTEGER,
       validate: {
         min: 0,
@@ -64,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
     firstFlightDate: {
       type: DataTypes.DATE,
       validate: {
-        sBefore: "2022-01-01",
+          isBefore: "2022-01-01",
 					isAfter: "2019-12-31", 
       }
     }
