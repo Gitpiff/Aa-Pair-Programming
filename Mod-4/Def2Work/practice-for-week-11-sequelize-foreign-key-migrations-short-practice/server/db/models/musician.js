@@ -10,7 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Your code here
+      //One to One  -One Musician belonegs to One Band
+     Musician.belongsTo(models.Band, {
+      foreignKey: 'bandId'
+     })
+
+     //One to Many  -One Instrument can have Many Musicians
+     Musician.belongsToMany(models.Instrument, {
+      through: 'MusicianInstrument'
+     })
     }
   };
   Musician.init({

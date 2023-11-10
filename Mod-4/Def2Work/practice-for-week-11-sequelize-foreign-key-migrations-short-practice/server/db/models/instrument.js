@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // Your code here
+      //Many to Many
+      Instrument.belongsToMany(models.Musician, {
+        through: 'MusicianInstrument'
+      })
     }
   };
   Instrument.init({
