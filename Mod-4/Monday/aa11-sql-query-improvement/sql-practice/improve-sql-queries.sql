@@ -10,7 +10,7 @@ from
     join cat_toys on cat_id = cats.id
     join toys on toy_id = toys.id
 where
-    cats.id = 5;
+    toys.id = 5;
 
 -- Paste your results below (as a comment):
 -- 5|Carlene|Olive|Asian|1576|5|2571|2571|Heart decoration|Salmon|40
@@ -28,7 +28,7 @@ from
     join cat_toys on cat_id = cats.id
     join toys on toy_id = toys.id
 where
-    cats.id = 5;
+    toys.id = 5;
 
 -- Paste your results below (as a comment);
 
@@ -59,19 +59,28 @@ from
     join cat_toys on cat_id = cats.id
     join toys on toy_id = toys.id
 where
-    cats.id = 5;
+    toys.id = 5;
 
 -- Paste your results below (as a comment):
---Run Time: real 0.001 user 0.000169 sys 0.000338
+-- Run Time: real 0.001 user 0.000582 sys 0.000024
 
 ----------
 -- Step 3 - Add an index and analyze how the query is executing
 ----------
 -- Create index:
 -- Your code here
-create index cat_toys_index on cat_toys(cat_id);
+CREATE INDEX idx_cat_toys_toy_id ON cat_toys(toy_id);
 -- Analyze Query:
 -- Your code here
+EXPLAIN QUERY PLAN
+select
+    *
+from
+    cats
+    join cat_toys on cat_id = cats.id
+    join toys on toy_id = toys.id
+where
+    toys.id = 5;
 -- Paste your results below (as a comment):
 -- Analyze Results:
 -- Is the new index being applied in this query?
