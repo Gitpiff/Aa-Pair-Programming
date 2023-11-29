@@ -17,19 +17,16 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
-    },
-    isPrimary : {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
       validate: {
-        checkColor(value) {
-          if(value === 'Red' || value === 'Blue' || value === 'Yellow') {
-            return true
-          }
-          return false
-        }             
+        len: {
+          args: [2,20],
+          msg: 'name must be between 2 and 20 characters'
+        },
+        noEndingInY(value) {
+			    if(value.slice(-1) === 'y') {
+				    throw new Error('name must not end in \'y\'');
+			    }
+		    }
       }
     }
   }, {

@@ -9,13 +9,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
-        unique: true
-      },
-      isPrimary: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING(20),
         allowNull: false,
-        defaultValue: false
+        unique: true
       },
       createdAt: {
         allowNull: false,
