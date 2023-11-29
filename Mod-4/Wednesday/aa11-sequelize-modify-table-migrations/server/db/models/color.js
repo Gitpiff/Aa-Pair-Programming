@@ -16,17 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   Color.init({
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [2, 20],
-        endsWithY(value) {
-          const lastLetter = value.slice(-1)
-          if(lastLetter === 'y') {
-            throw new Error('name must not end in \'y\'')
-          }
-        }
-      }
-    },
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Color',

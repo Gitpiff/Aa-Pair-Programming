@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Color extends Model {
+  class Game extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,23 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  Color.init({
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [2, 20],
-        endsWithY(value) {
-          const lastLetter = value.slice(-1)
-          if(lastLetter === 'y') {
-            throw new Error('name must not end in \'y\'')
-          }
-        }
-      }
-    },
+  Game.init({
+    name: DataTypes.STRING,
+    numPlayers: DataTypes.INTEGER,
+    estPlayTime: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Color',
+    modelName: 'Game',
   });
-  return Color;
+  return Game;
 };
