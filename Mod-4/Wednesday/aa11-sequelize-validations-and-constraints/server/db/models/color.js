@@ -18,7 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [2, 20],
+        len: {
+          args: [2, 20],
+          msg: 'Name must between 2 tot 20 characters'
+        },
         endsWithY(value) {
           const lastLetter = value.slice(-1)
           if(lastLetter === 'y') {
