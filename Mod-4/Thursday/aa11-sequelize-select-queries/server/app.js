@@ -22,7 +22,7 @@ app.get('/puppies', async (req, res, next) => {
     let allPuppies;
 
     // Your code here 
-
+    allPuppies = await Puppy.findAll()
     res.json(allPuppies);
 });
 
@@ -34,7 +34,12 @@ app.get('/puppies/chipped', async (req, res, next) => {
     let chippedPuppies;
 
     // Your code here 
-
+    chippedPuppies = await Puppy.findAll({
+        where: {
+            microchipped: true
+        },
+        order: [['name', 'DESC']]
+    })
     res.json(chippedPuppies);
 });
 
@@ -46,7 +51,9 @@ app.get('/puppies/name/:name', async (req, res, next) => {
     let puppyByName;
     
     // Your code here 
-
+    puppyByName = await Puppy.findOne({
+        where: { name: req.params.name }
+    })
     res.json(puppyByName);
 })
 
@@ -95,5 +102,5 @@ app.get('/', (req, res) => {
 });
 
 // Set port and listen for incoming requests - DO NOT MODIFY
-const port = 5000;
+const port = 8000;
 app.listen(port, () => console.log('Server is listening on port', port));
