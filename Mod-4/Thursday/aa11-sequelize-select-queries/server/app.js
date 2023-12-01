@@ -64,8 +64,16 @@ app.get('/puppies/name/:name', async (req, res, next) => {
 app.get('/puppies/shepherds', async (req, res, next) => {
     let shepherds;
     
+    const ovejero = req.params.breed
     // Your code here 
-
+    shepherds = await Puppy.findAll({
+        where: {
+            breed: {
+                [Op.like]: "%Shepherd"
+            }
+        },
+        order: [['name', 'ASC']]
+    })
     res.json(shepherds);
 })
 
@@ -77,7 +85,17 @@ app.get('/puppies/tinybabies', async (req, res, next) => {
     let tinyBabyPuppies;
     
     // Your code here 
-
+    tinyBabyPuppies = await Puppy.findAll({
+        where: {
+            ageYrs: {
+                [Op.lt]: 1
+            },
+            weightLbs: {
+                [Op.lt]: 20
+            }
+        },
+        order: [['ageYrs', 'ASC'],['weightLbs', 'DESC']]
+    })
     res.json(tinyBabyPuppies);
 })
 
@@ -89,7 +107,7 @@ app.get('/puppies/:id', async (req, res, next) => {
     let puppyById;
     
     // Your code here 
-    
+    puppyById = await Puppy.findByPk(req.params.id)
     res.json(puppyById);
 });
 
