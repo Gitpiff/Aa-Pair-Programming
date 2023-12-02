@@ -38,7 +38,7 @@ app.get('/puppies/chipped', async (req, res, next) => {
         where: {
             microchipped: true
         },
-        order: [['name', 'DESC']]
+        order: [['ageYrs', 'DESC'], 'name']
     })
     res.json(chippedPuppies);
 });
@@ -95,6 +95,7 @@ app.get('/puppies/tinybabies', async (req, res, next) => {
             }
         },
         order: [['ageYrs', 'ASC'],['weightLbs', 'DESC']]
+        //order: ['ageYrs','weightLbs']
     })
     res.json(tinyBabyPuppies);
 })

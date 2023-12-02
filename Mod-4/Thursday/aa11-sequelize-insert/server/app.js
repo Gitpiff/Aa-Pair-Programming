@@ -25,6 +25,21 @@ app.get('/puppies', async (req, res, next) => {
 // Respond to the request by sending a success message
 app.post('/puppies/build', async (req, res, next) => {
     // Your code here 
+    const { name, ageYrs, breed, weightLbs, microchipped } = req.body
+
+    const newPuppy = await Puppy.build({
+        name,
+        ageYrs,
+        breed,
+        weightLbs,
+        microchipped
+    })
+
+    await newPuppy.save()
+    res.json({
+        message: "Success",
+        data: newPuppy
+    })
 })
 
 // STEP 2
@@ -34,6 +49,19 @@ app.post('/puppies/build', async (req, res, next) => {
 // Respond to the request by sending a success message
 app.post('/puppies/create', async (req, res, next) => {
     // Your code here 
+    const { name, ageYrs, breed, weightLbs, microchipped } = req.body
+
+    const newPuppy = await Puppy.create({
+        name,
+        ageYrs,
+        breed,
+        weightLbs,
+        microchipped
+    })
+    return res.json({
+        message: "Success",
+        data: newPuppy
+    })
 })
 
 
