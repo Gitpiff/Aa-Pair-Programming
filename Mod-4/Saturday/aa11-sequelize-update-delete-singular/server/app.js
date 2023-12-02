@@ -21,12 +21,47 @@ app.get('/puppies', async (req, res, next) => {
 // STEP 1: Update a puppy by id
 app.put('/puppies/:puppyId', async (req, res, next) => {
     // Your code here 
+    const puppyToUpdate = await Puppy.findByPk(req.params.puppyId)
+    const { ageYrs, weightLbs, microchipped } = req.body 
+
+    await puppyToUpdate.update({
+        ageYrs,
+        weightLbs,
+        microchipped
+    })
+
+    // await puppy.save()
+    return res.json({
+        message: "Success",
+        puppy: puppyToUpdate
+    })
+
+    // const { puppyId } = req.params;
+    // const { ageYrs, weightLbs, microchipped } = req.body;
+    // // Get a reference to the instance of the Sequelize model to be updated
+    // const puppyToUpdate = await Puppy.findByPk(puppyId);
+    // // Assign the attributes that will be changed
+    // //   if (ageYrs !== undefined) puppyToUpdate.ageYrs = ageYrs;
+    // //   if (weightLbs !== undefined) puppyToUpdate.weightLbs = weightLbs;
+    // //   if (microchipped !== undefined) puppyToUpdate.microchipped = microchipped;
+    // //   // Save the updated instance to the database
+    // //   await puppyToUpdate.set({ ageYrs, weightLbs, microchipped })
+    // //   await puppyToUpdate.save();
+    // await puppyToUpdate.update({ ageYrs, weightLbs, microchipped });
+    // return res.json({ message: "Success", puppy: puppyToUpdate });
 })
 
 
 // STEP 2: Delete a puppy by id
 app.delete('/puppies/:puppyId', async (req, res, next) => {
     // Your code here 
+    const puppyToDelete = await Puppy.findByPk(req.params.puppyId)
+
+    await puppyToDelete.destroy()
+    res.json({
+        message: "Successfully deleted",
+        puppy: puppyToDelete
+    })
 })
 
 
