@@ -26,16 +26,13 @@ const { Tree } = require('../db/models')
  */
 router.get('/', async (req, res, next) => {
     let trees = [];
-    const { heightFt, tree, id } = req.body
+
     // Your code here 
-    await Tree.findAll({
-        where: {
-            heightFt,
-            tree,
-            id
-        },
-        order: [['heightFt', 'DESC']]
-    })
+    trees = await Tree.findAll({
+        attributes: ['heightFt', 'tree', 'id'],
+        order: [['heightFt','DESC']],
+    });
+
     res.json(trees);
 });
 
@@ -50,9 +47,11 @@ router.get('/', async (req, res, next) => {
  */
 router.get('/:id', async (req, res, next) => {
     let tree;
+    const { id } = req.params
 
     try {
         // Your code here 
+        tree = await Tree.findByPk(id)
 
         if (tree) {
             res.json(tree);
