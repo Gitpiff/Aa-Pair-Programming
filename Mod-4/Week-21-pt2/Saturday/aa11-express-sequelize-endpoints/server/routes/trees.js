@@ -202,10 +202,18 @@ router.put('/:id', async (req, res, next) => {
         // Your code here 
         const { id, name, location, height, size } = req.body 
 
-        
-        if(id.toString() === req.params.id) {
-            const updatedTree = await Tree.findByPk(req.params.id)
-            await Tree.update(
+        const updatedTree = await Tree.findByPk(req.params.id)
+        if(id.toString() !== req.params.id) {
+            next({
+                status: 'error',
+                message: `Could not update tree`,
+                details: `${req.params.id} does not match ${id}`
+            })
+        }
+
+        if(updatedTree && id.toString() === req.params.id) {
+
+            await updatedTree.update(
                 {
                     id,
                     tree: name,
@@ -228,11 +236,11 @@ router.put('/:id', async (req, res, next) => {
             });
             
         } else {
-            res.status(400)
+            //res.status(400)
             next({
-                status: 'error',
-                message: `Could not update tree ${id}`,
-                details: `${req.params.id} does not match ${id}` 
+                status: 'not-found',
+                message: `Could not update tree ${req.params.id}`,
+                details: 'Tree not found' 
             })
         }
     } catch(err) {
