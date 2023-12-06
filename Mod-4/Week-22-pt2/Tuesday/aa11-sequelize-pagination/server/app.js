@@ -20,7 +20,13 @@ app.get('/musicians', async (req, res, next) => {
     let { page, size } = req.query 
 
     page = page === undefined ? 1 : parseInt(page)
+    size = size === undefined ? 5 : parseInt(size)
     
+    const pagination = {}
+    if(page >=1 && size >= 1) {
+        pagination.limit = size 
+        pagination.offset = size * (page - 1)
+    }
     // Query for all musicians
     // Include attributes for `id`, `firstName`, and `lastName`
     // Include associated bands and their `id` and `name`
@@ -35,6 +41,7 @@ app.get('/musicians', async (req, res, next) => {
         // add limit key-value to query
         // add offset key-value to query
         // Your code here 
+        ...pagination
     });
 
     res.json(musicians)
