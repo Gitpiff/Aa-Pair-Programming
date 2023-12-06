@@ -20,6 +20,8 @@ app.get('/musicians', async (req, res, next) => {
         where: {},
         include: []
     };
+    
+    console.log(query)
 
     // Pagination Options
     // ?page=XX&size=YY
@@ -35,16 +37,21 @@ app.get('/musicians', async (req, res, next) => {
 
     // STEP 1: WHERE clauses on the Musician model
     // ?firstName=XX&lastName=YY
+    const { firstName, lastName } = req.query
     // Add keys to the WHERE clause to match the firstName param, if it exists.
     // End result: { where: { firstName: req.query.firstName } }
-
     // Your code here 
+    if(firstName) {
+        query.where.firstName = firstName
+    } 
     
     // Add keys to the WHERE clause to match the lastName param, if it exists.
     // End result: { where: { lastName: req.query.lastName } }
     
     // Your code here 
-
+    if(lastName) {
+        query.where.lastName = lastName
+    } 
 
     // STEP 2: WHERE clauses on the associated Band model
     // ?bandName=XX
@@ -53,7 +60,16 @@ app.get('/musicians', async (req, res, next) => {
     // End result: { include: [{ model: Band, where: { name: req.query.bandName } }] }
 
     // Your code here 
+    if(req.query.bandName) {
+        query.include.push({
+                model: Band,
+                where: {
+                    name: req.query.bandName
+                }
+            }
+        )
 
+    }
 
     // STEP 3: WHERE Clauses on the associated Instrument model 
     // ?instrumentTypes[]=XX&instrumentTypes[]=YY
@@ -61,6 +77,15 @@ app.get('/musicians', async (req, res, next) => {
     // where the type matches any value in the instrumentTypes param array, if it 
     // exists. Do not include any attributes from the join table 
     // MusicianInstruments.
+    if(req.query.instrumentTypes) {
+        query.include.push(
+            { 
+                model: Instrument, 
+                where: { type: req.query.instrumentTypes }, 
+                through: { attributes: [] } // Omits the join table attributes
+            }
+        )
+    }
     // End result: 
     /* { 
         include: [{ 
@@ -137,5 +162,5 @@ app.get('/', (req, res) => {
 });
 
 // Set port and listen for incoming requests - DO NOT MODIFY
-const port = 5000;
+const port = 8000;
 app.listen(port, () => console.log('Server is listening on port', port));
