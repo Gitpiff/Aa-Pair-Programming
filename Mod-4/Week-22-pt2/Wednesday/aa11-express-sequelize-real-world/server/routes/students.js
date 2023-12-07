@@ -93,17 +93,21 @@ router.get('/', async (req, res, next) => {
     });
 
     // Phase 2E: Include the page number as a key of page in the response data
-        // In the special case (page=0, size=0) that returns all students, set
-            // page to 1
-        /*
-            Response should be formatted to look like this:
-            {
-                rows: [{ id... }] // query results,
-                page: 1
-            }
-        */
-    // Your code here 
-
+    // In the special case (page=0, size=0) that returns all students, set
+    // page to 1
+    /*
+    Response should be formatted to look like this:
+    {
+        rows: [{ id... }] // query results,
+        page: 1
+    }
+    */
+   // Your code here 
+   if(page === 0 && size === 0) result.page = 1
+   else {
+       result.page = page 
+   }
+    
 
     // Phase 3B:
         // Include the total number of available pages for this query as a key
