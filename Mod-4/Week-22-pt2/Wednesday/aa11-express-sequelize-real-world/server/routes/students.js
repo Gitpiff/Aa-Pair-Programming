@@ -12,13 +12,26 @@ router.get('/', async (req, res, next) => {
 
     // Phase 2A: Use query params for page & size
     // Your code here 
+    let { page, size } = req.query
 
+    page = page ? parseInt(page) : 1
+    size = size ? parseInt(size) : 10
+
+    if(isNaN(page) || isNaN(size) || page < 0 || size < 0) {
+        errorResult.errors.push({ message: 'Requires valid page and size params' })
+    }
     // Phase 2B: Calculate limit and offset
+    const pagination = {}
+
+    if(page >= 1 && size >= 1) {
+        pagination.limit = size 
+        pagination.offset = size * (page - 1)
+    }
     // Phase 2B (optional): Special case to return all students (page=0, size=0)
     // Phase 2B: Add an error message to errorResult.errors of
         // 'Requires valid page and size params' when page or size is invalid
     // Your code here 
-
+    
     // Phase 4: Student Search Filters
     /*
         firstName filter:
@@ -48,6 +61,7 @@ router.get('/', async (req, res, next) => {
 
 
     // Phase 2C: Handle invalid params with "Bad Request" response
+   
     // Phase 3C: Include total student count in the response even if params were
         // invalid
         /*
@@ -74,7 +88,8 @@ router.get('/', async (req, res, next) => {
         attributes: ['id', 'firstName', 'lastName', 'leftHanded'],
         where,
         // Phase 1A: Order the Students search results
-        order: [['lastName'], ['firstName']]
+        order: [['lastName'], ['firstName']],
+        ...pagination
     });
 
     // Phase 2E: Include the page number as a key of page in the response data
@@ -88,6 +103,7 @@ router.get('/', async (req, res, next) => {
             }
         */
     // Your code here 
+
 
     // Phase 3B:
         // Include the total number of available pages for this query as a key
@@ -104,8 +120,13 @@ router.get('/', async (req, res, next) => {
             }
         */
     // Your code here 
-
-    res.json(result);
+    if(errorResult.errors.length > 0) {
+        res.status(400)
+        //req.body = errorResult
+        res.json(errorResult)
+    } else {
+        res.json(result);
+    }     
 });
 
 // Export class - DO NOT MODIFY
