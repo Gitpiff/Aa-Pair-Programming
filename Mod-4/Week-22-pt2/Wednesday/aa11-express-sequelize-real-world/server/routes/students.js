@@ -5,6 +5,7 @@ const router = express.Router();
 // Import model(s)
 const { Student } = require('../db/models');
 const { Op } = require("sequelize");
+const student = require('../db/models/student');
 
 // List
 router.get('/', async (req, res, next) => {
@@ -58,7 +59,38 @@ router.get('/', async (req, res, next) => {
     const where = {};
 
     // Your code here 
+    const { firstName, lastName, lefty } = req.query
 
+    if(firstName) {
+        where.firstName = {
+                [Op.like]: '%' + firstName + '%'  
+        }
+        pagination.limit = await Student.count()
+    }
+    if(lastName) {
+        where.lastName = {
+                [Op.like]: '%' + lastName + '%'  
+        }
+        pagination.limit = await Student.count()
+    }
+    if(lefty === 'true') {
+        where.leftHanded = true
+        pagination.limit = await Student.count()
+    } 
+    else if(lefty === 'false') {
+        console.log('false')
+        where.leftHanded = false
+        pagination.limit = await Student.count()
+    } else {
+        errorResult.errors.push({
+            message: 'Lefty should be either true or false'
+        })
+    }
+    // Post.findAll({
+    //     where: {
+    //       title: { [Op.like]: '%The Fox & The Hound%' },
+    //     },
+    //   });
 
     // Phase 2C: Handle invalid params with "Bad Request" response
    
@@ -85,21 +117,24 @@ router.get('/', async (req, res, next) => {
         // Note: This should be a new query
     result.count = await Student.count()
     
-    result.pageCount = Math.ceil(result.count / size) 
-
-    if(page === 0 && size === 0) result.page = 1
+    if(page === 0 && size === 0) {
+        result.page = 1
+    }
     else {
         result.page = page 
     }
-
+    
     result.rows = await Student.findAll({
         attributes: ['id', 'firstName', 'lastName', 'leftHanded'],
         where,
         // Phase 1A: Order the Students search results
         order: [['lastName'], ['firstName']],
         ...pagination
-    });
+    })
 
+    result.count = result.rows.length
+    result.pageCount = Math.ceil(result.count / size) 
+    
     // Phase 2E: Include the page number as a key of page in the response data
     // In the special case (page=0, size=0) that returns all students, set
     // page to 1
@@ -130,7 +165,7 @@ router.get('/', async (req, res, next) => {
     // Your code here 
     if(errorResult.errors.length > 0) {
         res.status(400)
-        errorResult.count = result.count
+        
         //req.body = errorResult
         res.json(errorResult)
     } else {
