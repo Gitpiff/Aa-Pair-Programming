@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import model(s)
-const { Classroom } = require('../db/models');
+const { Classroom, Supply } = require('../db/models');
 const { Op } = require('sequelize');
 
 // List of classrooms
@@ -59,8 +59,10 @@ router.get('/:id', async (req, res, next) => {
                 // then firstName (both in ascending order)
                 // (Optional): No need to include the StudentClassrooms
         // Your code here 
+        include: [{model: Supply}]
     });
-
+    console.log(classroom)
+    //classroom.dataValues.greg = "Sup"
     if (!classroom) {
         res.status(404);
         res.send({ message: 'Classroom Not Found' });
@@ -69,6 +71,13 @@ router.get('/:id', async (req, res, next) => {
     // Phase 5: Supply and Student counts, Overloaded classroom
         // Phase 5A: Find the number of supplies the classroom has and set it as
             // a property of supplyCount on the response
+    // classroom.toJSON()
+    // classroom.supplyCount = await Supply.count({
+    //     where: {
+    //         classroomId: classroom.id
+    //     }
+    // })
+
         // Phase 5B: Find the number of students in the classroom and set it as
             // a property of studentCount on the response
         // Phase 5C: Calculate if the classroom is overloaded by comparing the
