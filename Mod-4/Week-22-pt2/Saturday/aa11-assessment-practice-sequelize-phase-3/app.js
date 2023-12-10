@@ -48,39 +48,46 @@ app.put('/items/:id', async (req, res, next) => {
 
 app.get('/items/:name', async (req, res, next) => {
   const { name } = req.params
-  if(item) {
-    const item = await WarehouseItem.findOne({
-      where: {
-        name
+
+
+
+  const item = await WarehouseItem.findOne({
+    where: {
+      name
+    }
+  })
+  if(!item) {
+    res.status(404)
+    res.json(
+      {
+        message: "Warehouse Item not found"
       }
-    })
-    return res.json(item)
+    )
   }
   
-
-  res.status(404)
-  res.json(
-    {
-      message: "Warehouse Item not found"
-    }
-  )
+  res.json(item)
 })
 
-app.delete('items/:id', async (req, res, next) => {
+app.delete('/items/:id', async (req, res, next) => {
   const { id } = req.params
 
   const item = await WarehouseItem.findByPk(id)
-  if(item) {
-    item.destroy()
-    return res.message('Deleted')
+  if(!item) {
+    res.status(404)
+    res.json(
+      {
+        message: "Warehouse Item not found"
+      }
+    )
   }
-
-  res.status(404)
-  res.json(
+  
+  await item.destroy()
+  return res.json(
     {
-      message: "Warehouse Item not found"
+     message: "Successfully deleted"
     }
   )
+
   }
 )
 
