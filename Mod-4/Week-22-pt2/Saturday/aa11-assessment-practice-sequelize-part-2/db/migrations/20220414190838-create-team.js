@@ -15,13 +15,6 @@ module.exports = {
       homeCity: {
         type: Sequelize.STRING,
       },
-      sportId: {
-        allowNull: false,
-        references: {
-          model: 'Sports',
-          key: 'id'
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
