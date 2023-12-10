@@ -53,6 +53,11 @@ module.exports = {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       }
     });
+    //add Index
+    // await queryInterface.addIndex('Superheros', {
+    //   fields: ['universe', 'releaseYear'],
+    //   unique: true
+    // })
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Superheros');

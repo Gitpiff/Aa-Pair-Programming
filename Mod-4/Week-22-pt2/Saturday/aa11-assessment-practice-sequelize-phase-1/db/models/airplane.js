@@ -32,11 +32,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        numsOnly(value) {
-          if(isNaN(value)) {
-            throw new Error('Flight Number must be Numbers Only')
-          }
-        },
+        // numsOnly(value) {
+        //   if(isNaN(value)) {
+        //     throw new Error('Flight Number must be Numbers Only')
+        //   }
+        // },
+        isNumeric: true,
         len: [1, 4]
       }
     },

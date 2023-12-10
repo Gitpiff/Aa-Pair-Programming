@@ -110,6 +110,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Superhero',
+    //create an index without migration 
     indexes: [
       {
         unique: true,

@@ -42,6 +42,12 @@ module.exports = {
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
     });
+
+    //We can add an Index without having to create a migration file 
+    // await queryInterface.addIndex('Airplanes', {
+    //   fields: ['airlineCode', 'flightNumber'],
+    //   unique: true
+    // })
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Airplanes');
