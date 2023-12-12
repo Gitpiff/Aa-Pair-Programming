@@ -11,6 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Entree.belongsToMany(models.EntreeType, {
+        through: 'EntreeIngredients',
+        foreignKey: 'entreeTypeId',
+        onDelete: 'CASCADE',
+        hooks: true
+      })
+      Entree.belongsToMany(models.Ingredient, {
+        through: 'EntreeIngredients',
+        foreignKey: 'entreeId',
+        otherKey: 'ingredientId'
+      })
     }
   }
   Entree.init({
