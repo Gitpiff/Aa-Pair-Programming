@@ -12,6 +12,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // Step 2 - define polymorphic association
       // Your code here 
+      BlogPost.hasMany(models.Image, {
+        foreignKey: 'imageableId',
+        //disable foreingKey constraints
+        constraints: false,
+        //define what we need to connect the fk
+        scope: {
+          //This column will connect the fk with the BlogPost model
+          imageableType: 'BlogPost'
+        }
+      })
     }
   };
   BlogPost.init({
