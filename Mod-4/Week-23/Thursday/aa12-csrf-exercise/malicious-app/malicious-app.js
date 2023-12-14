@@ -76,5 +76,5 @@ app.post('/tweets', async (req, res) => {
   return res.json(body);
 });
 
-const port = 5002;
+const port = 5001;
 app.listen(port, () => console.log('Server is listening on port', port));
