@@ -69,9 +69,9 @@ FROM accounts;
 -- After executing:
 -- | `id` | `first_name` | `last_name` | `balance` |
 -- | ---- | ------------ | ----------- | --------- |
--- | 1    | Amy          | Pond        | ????      |
--- | 2    | Rose         | Tyler       | ????      |
--- | 3    | Martha       | Jones       | ????      |
--- | 4    | Donna        | Nobles      | ????      |
--- | 5    | River        | Song        | ????      |
+-- | 1    | Amy          | Pond        | 2300      |
+-- | 2    | Rose         | Tyler       | 1200      |
+-- | 3    | Martha       | Jones       | 2800      |
+-- | 4    | Donna        | Nobles      | 200      |
+-- | 5    | River        | Song        | 1000      |
 

@@ -2,14 +2,14 @@
 -- Violating Constraints
 -- "OR ROLLBACK" will invoke a ROLLBACK if constraints fail
 BEGIN TRANSACTION;
-  UPDATE accounts
+  UPDATE OR ROLLBACK accounts
   SET balance = balance + 1000
   WHERE (
       first_name = 'Amy'
       AND last_name = 'Pond'
     );
 
-  UPDATE accounts
+  UPDATE OR ROLLBACK accounts
   SET balance = balance - 1000
   WHERE (
       first_name = 'Rose'
