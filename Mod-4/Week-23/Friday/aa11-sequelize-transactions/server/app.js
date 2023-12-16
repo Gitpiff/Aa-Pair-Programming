@@ -19,12 +19,13 @@ app.get('/unmanaged', async (req, res, next) => {
     try {
         // Queries to be performed in the transaction:
         
+        
         // Find Rose's account, add 200 to her balance, then save
         let rose = await Account.findOne({
             where: { 
                 firstName: 'Rose', 
                 lastName: 'Tyler' 
-            //}
+            }
         });
         await rose.update({
             balance: rose.balance + 200
@@ -36,7 +37,7 @@ app.get('/unmanaged', async (req, res, next) => {
             where: { 
                 firstName: 'Martha', 
                 lastName: 'Jones' 
-            //}
+            }
         });
         await martha.update({
             balance: martha.balance - 200
