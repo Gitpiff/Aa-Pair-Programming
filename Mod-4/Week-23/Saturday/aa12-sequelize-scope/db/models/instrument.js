@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Instrument',
+    // defaultScope: {
+    //   attributes: {
+    //     exclude: ['createdAt', 'updatedAt', 'location']
+    //   }
+    // }
   });
   return Instrument;
 };

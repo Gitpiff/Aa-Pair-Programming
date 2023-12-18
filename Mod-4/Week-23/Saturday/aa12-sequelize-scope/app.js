@@ -17,6 +17,7 @@ app.use(express.json());
 // STEP 1: Apply a default scope onto the searches
 // List of all the instruments in the database - DO NOT MODIFY
 app.get('/instruments', async (req, res, next) => {
+    console.log("Hey")
     const allInstruments = await Instrument.findAll();
     return res.json(allInstruments);
 });
