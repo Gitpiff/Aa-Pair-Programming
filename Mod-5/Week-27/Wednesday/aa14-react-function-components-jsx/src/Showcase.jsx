@@ -14,8 +14,7 @@ function Showcase() {
         <h1>{favPokemon}&apos;s Showcase Component</h1>
         <img src={Bulbasaur} alt='Bulbasaur' />
         <h2>
-            Bulbasauru's type is <p className='type'>{pokeCharacteristics.type}</p> 
-            and one of their moves is <p className='move'>{pokeCharacteristics.move}</p>
+            Bulbasauru's type is <span className='type'>{pokeCharacteristics.type}</span> and one of their moves is <span className='move'>{pokeCharacteristics.move}</span>
         </h2>
       </div>
     );
