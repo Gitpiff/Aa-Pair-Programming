@@ -1,0 +1,9 @@
+.type {
+    background-color: green;
+    color: white;
+}
+
+.move {
+    background-color: white;
+    color: green;
+}
