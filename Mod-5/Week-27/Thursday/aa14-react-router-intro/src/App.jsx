@@ -1,8 +1,8 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './components/Home';
 import Stocks from './components/Stocks';
 import Movies from './components/Movies';
 import PageNotFound from './components/NotFound';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
 const router = createBrowserRouter(
@@ -27,6 +27,10 @@ const router = createBrowserRouter(
       path: "/",
       children: [
         {
+          index: true,
+          element: <Home />
+        },
+        {
           path: "stocks",
           element: <Stocks />
         },
@@ -36,7 +40,7 @@ const router = createBrowserRouter(
         },
         {
           path: "*",
-          element: <PageNotFound />
+          element: <h1>Page Not Found</h1>
         }
       ]
     }
