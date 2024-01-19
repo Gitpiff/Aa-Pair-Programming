@@ -1,10 +1,10 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Stocks() {
   const navigate = useNavigate();
   const loggedIn = true;
 
-  if(!loggedIn) return <Navigate to='/not-logged-in' replace={true} />
+  if (!loggedIn) return <Navigate to='/not-logged-in' replace={true} />;
 
   const handleClick = () => {
     window.alert('Sending info to the DB!');

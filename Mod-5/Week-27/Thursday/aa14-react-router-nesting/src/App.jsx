@@ -10,30 +10,30 @@ function Layout() {
       <nav className='comp nav'>
         <ul>
           <li>
-            <NavLink 
-              to="/" 
+            <NavLink
+              to='/'
               className={({isActive}) => isActive? 'purple' : ''}
-              style={({isActive}) => isActive ? {fontWeight: "bold"}: {}}
-              >
-                Home
+              style={({isActive}) => isActive? { fontWeight: 'bold' } : {}}
+            >
+              Home
             </NavLink>
           </li>
           <li>
             <NavLink 
-              to="/stocks" 
+              to='/stocks' 
               className={({isActive}) => isActive? 'purple' : ''}
-              style={({isActive}) => isActive ? {fontWeight: "bold"}: {}}
-              >
-               Stocks
+              style={({isActive}) => isActive? { fontWeight: 'bold' } : {}}
+            >
+              Stocks
             </NavLink>
           </li>
           <li>
-            <NavLink 
-              to="/movies" 
+            <NavLink
+              to='/movies'
               className={({isActive}) => isActive? 'purple' : ''}
-              style={({isActive}) => isActive ? {fontWeight: "bold"}: {}}
-              >
-                Movies
+              style={({isActive}) => isActive? { fontWeight: 'bold' } : {}}
+            >
+              Movies
             </NavLink>
           </li>
         </ul>
@@ -42,11 +42,11 @@ function Layout() {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }
 
 const router = createBrowserRouter([
-  {
+  { 
     element: <Layout />,
     children: [
       {
@@ -67,18 +67,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/not-logged-in',
-        element: <h1>You Must Be Logged In To Enter.</h1>
+        element: <h1> You Must Be Logged In To Enter.</h1>
       }
     ]
-  },
+  }
 ]);
 
 function App() {
-  return (
-    
-      <RouterProvider router={router} />
-
-  );
+  return <RouterProvider router={router} />
 }
 
 export default App;
