@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import COLORS from './data/colors.json';
@@ -11,6 +11,14 @@ const Cat = () => {
   const [statusChange, setStatusChange] = useState('418');
   const [delay, setDelay] = useState('');
   const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    const colorInterval = setInterval(() => {
+      setColorIdx(prevNum => ++prevNum % COLORS.length);
+    }, delayChange);
+
+    return () => clearInterval(colorInterval);
+  }, [delayChange]);
 
 
   const handleDelaySubmit = (e) => {
