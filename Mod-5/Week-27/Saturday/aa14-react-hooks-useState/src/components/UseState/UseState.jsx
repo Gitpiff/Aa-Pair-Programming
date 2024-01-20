@@ -18,6 +18,9 @@ const UseState = () => {
       <button onClick={() => setCount(prevCount => prevCount - 1)}>
         Decrement
       </button>
+      <button onClick={() => (theme === 'dark') ? setTheme('light') : setTheme('dark')}>
+        Toggle Theme
+      </button>
     </div>
   );
 };
