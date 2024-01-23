@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useTextInput } from '../hooks/textInput';
 import { textInputValidators } from '../utils/validations';
 
 const Form = () => {
-  const [name, setName] = useState('');
-  const validatorResults = textInputValidators.map((validator) => validator(name));
-  const failedValidators = validatorResults.filter((validationObj) => !validationObj.pass);
-  const nameErrors = failedValidators.map((validationObj) => validationObj.msg);
+  // const [name, setName] = useState('');
+  // const validatorResults = textInputValidators.map((validator) => validator(name));
+  // const failedValidators = validatorResults.filter((validationObj) => !validationObj.pass);
+  // const nameErrors = failedValidators.map((validationObj) => validationObj.msg);
+  
+  const [name, setName, nameErrors] = useTextInput({
+    validations: textInputValidators
+  });
 
   return (
     <>
@@ -19,7 +23,7 @@ const Form = () => {
           <input
             id="name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={setName}
           />
         </label>
       </form>
