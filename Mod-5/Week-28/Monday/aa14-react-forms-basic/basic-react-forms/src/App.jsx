@@ -4,9 +4,12 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  const [ name, setName ] = useState("");
+  const [ email, setEmail ] = useState("");
+  const [ phone, setPhone ] = useState("");
+  const [ bio, setBio ] = useState("");
   
   useEffect(() => {
-    
   })
 
   return (
@@ -14,17 +17,29 @@ function App() {
      <form action="">
         <div>
           <label htmlFor="name">Name:</label>
-          <input type="text" />
+          <input 
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}  
+          />
         </div>
 
         <div>
           <label htmlFor="email">Email:</label>
-          <input type="email" />
+          <input 
+            type="email"
+            value={email}  
+            onChange={(e) => setEmail(e.target.value)} 
+          />
         </div>
 
         <div>
           <label htmlFor="phone">Phone:</label>
-          <input type="text" />
+          <input 
+            type="text"
+            value={phone}  
+            onChange={(e) => setPhone(e.target.value)} 
+          />
           <select>
             <option>Home</option>
             <option>Work</option>
@@ -42,7 +57,14 @@ function App() {
         </div>
         
         <div>
-          <textarea name="" id="" cols="30" rows="10">Bio:</textarea>
+          <textarea 
+            cols="30" 
+            rows="10"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)} 
+          >
+            Bio:
+          </textarea>
         </div>
 
         <div>
