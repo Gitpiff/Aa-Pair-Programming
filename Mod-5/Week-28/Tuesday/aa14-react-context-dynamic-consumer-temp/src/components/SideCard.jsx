@@ -1,4 +1,5 @@
 const SideCard = () => {
+  console.log("Sidecar")
   return (
     <div className='side-card'>
       <h1>React Context with Horoscopes</h1>

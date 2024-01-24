@@ -8,7 +8,7 @@ const Detail = () => {
   return (
     <div className='details'>
       <img
-        src='https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg'
+        src={sign.backgroundImg}
         alt=''
       />
       <h2>{sign.name}</h2>
