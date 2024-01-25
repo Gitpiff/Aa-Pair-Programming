@@ -2,7 +2,8 @@ import './ClimateStats.css';
 import { useClimateTheme } from '../../context/ClimateContext';
 
 function ClimateStats() {
-const { temperature, setTemperature, humidity, setHumidity } = useClimateTheme();
+const { temperature, humidity } = useClimateTheme();
+
 
   return (
     <div className="climate-stats">
