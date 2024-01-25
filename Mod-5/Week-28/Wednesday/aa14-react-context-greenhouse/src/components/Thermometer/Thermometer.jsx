@@ -1,7 +1,11 @@
 import ReactSlider from 'react-slider';
 import './Thermometer.css';
+import { useClimateTheme } from '../../context/ClimateContext';
+import { useEffect } from 'react';
 
 function Thermometer() {
+  const { setTemperature } = useClimateTheme();
+  
   return (
     <section>
       <h2>Thermometer</h2>

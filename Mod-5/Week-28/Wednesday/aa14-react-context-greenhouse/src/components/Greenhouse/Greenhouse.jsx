@@ -2,7 +2,7 @@ import dayImage from './images/greenhouse-day.jpg';
 import nightImage from './images/greenhouse-night.jpg';
 import './Greenhouse.css';
 import { useTheme } from '../../context/ThemeContext';
-import { useClimateTheme } from '../../context/ClimateContext';
+
 
 import LightSwitch from './LightSwitch';
 import ClimateStats from './ClimateStats';
@@ -18,7 +18,7 @@ function Greenhouse() {
       />
       <LightSwitch />
       <ClimateStats />
-      
+
     </section>
   );
 }
