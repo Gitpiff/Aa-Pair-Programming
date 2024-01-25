@@ -2,10 +2,11 @@ import './LightSwitch.css';
 import { useTheme } from '../../context/ThemeContext';
 
 function LightSwitch() {
-  const { setThemeName } = useTheme();
+  const { setThemeName, themeName } = useTheme();
+
 
   return (
-    <div className="light-switch day">
+    <div className={`light-switch ${themeName}`}>
       <div className="on" onClick={()=> setThemeName('day')}>DAY</div>
       <div className="off" onClick={()=> setThemeName('night')}>NIGHT</div>
     </div>
