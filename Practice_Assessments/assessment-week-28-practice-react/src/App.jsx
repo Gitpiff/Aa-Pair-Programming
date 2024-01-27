@@ -41,7 +41,7 @@ function App() {
   return (
     <>
     <h1>Fruits App</h1>
-    <Navigation />
+    {/* <Navigation /> */}
      <RouterProvider router={router} />
     </>
   )
