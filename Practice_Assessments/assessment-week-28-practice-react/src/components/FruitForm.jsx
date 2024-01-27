@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const COLORS = [
   "red",
   "orange",
@@ -8,10 +11,49 @@ const COLORS = [
 ];
 
 function FruitForm({ fruits }) {
+  const navigate = useNavigate();
+  const [ name, setName ] = useState("");
+  const [ sweetness, setSweetness ] = useState(1);
+  const [ seeds, setSeeds ] = useState("yes");
+  const [ color, setColor ] = useState("orange");
+  const [ validationErrors, setValidationErrors ] = useState({});
+
+  useEffect(() => {
+    const errors = {};
+
+    if(name.length < 3) {
+      errors.name = "Name must be 3 or more characters"
+    }
+    if(name.length > 20) {
+      errors.name = "Name must be 20 characters or less"
+    }
+    const prevFruit = fruits.find(fruit => fruit.name === name)
+    if(prevFruit) {
+      errors.name = "Name already exists"
+    }
+    if(sweetness < 1 || sweetness > 10) {
+      errors.sweetness = "Sweetness must be between 1 and 10"
+    }
+
+    setValidationErrors(errors)
+  }, [fruits, name, sweetness])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({
+      name, 
+      sweetness, 
+      color,
+      seeds
+    })
+
+    navigate("/")
+  }
 
   return (
     <form
       className="fruit-form"
+      onSubmit={handleSubmit}
     >
       <h2>Enter a Fruit</h2>
       <label>
@@ -19,11 +61,16 @@ function FruitForm({ fruits }) {
         <input
           type="text"
           name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </label>
+      <p className="errors">{validationErrors.name}</p>
       <label>
         Select a Color
         <select
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
         >
           {COLORS.map(color => (
             <option
@@ -40,13 +87,18 @@ function FruitForm({ fruits }) {
         <input
           type="number"
           name="sweetness"
+          value={sweetness}
+          onChange={(e) => setSweetness(e.target.value)}
         />
       </label>
+      <p className="errors">{validationErrors.sweetness}</p>
       <label>
         <input
           type="radio"
           value="no"
           name="seeds"
+          checked= {seeds === "no"}
+          onChange={(e) => setSeeds(e.target.value)}
         />
         No Seeds
       </label>
@@ -55,11 +107,14 @@ function FruitForm({ fruits }) {
           type="radio"
           value="yes"
           name="seeds"
+          checked= {seeds === "yes"}
+          onChange={(e) => setSeeds(e.target.value)}
         />
         Seeds
       </label>
       <button
         type="submit"
+        disabled={Object.keys(validationErrors).length !== 0}
       >
         Submit Fruit
       </button>
