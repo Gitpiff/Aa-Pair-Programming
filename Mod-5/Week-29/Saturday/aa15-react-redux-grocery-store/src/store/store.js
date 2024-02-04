@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import produceReducer from './produce';
 
 // createStore - creates a Redux store
 // combineReducers - creates one reducer from multiple reducers as slices of state
@@ -7,20 +8,20 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 // rootReducer which will be the root reducer for the Redux store. The rootReducer will just be the return of combineReducers invoked with an empty object for now.
 const rootReducer = combineReducers({
-
-});
+    produce: produceReducer
+  });
 
 
 let enhancer;
 
 if (import.meta.env.MODE !== "production") {
-    const logger = (await import("redux-logger")).default;
-    const composeEnhancers =
-      typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true })
-        : compose;
-    enhancer = composeEnhancers(applyMiddleware(logger));
-  }
+  const logger = (await import("redux-logger")).default;
+  const composeEnhancers =
+    typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true })
+      : compose;
+  enhancer = composeEnhancers(applyMiddleware(logger));
+}
 
 
 const configureStore = (preloadedState) => {
