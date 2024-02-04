@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import produceReducer from './produce';
+import { cartReducer } from './cart';
 
 // createStore - creates a Redux store
 // combineReducers - creates one reducer from multiple reducers as slices of state
@@ -8,7 +9,8 @@ import produceReducer from './produce';
 
 // rootReducer which will be the root reducer for the Redux store. The rootReducer will just be the return of combineReducers invoked with an empty object for now.
 const rootReducer = combineReducers({
-    produce: produceReducer
+    produce: produceReducer,
+    cart: cartReducer
   });
 
 
