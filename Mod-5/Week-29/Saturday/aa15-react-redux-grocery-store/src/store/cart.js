@@ -27,7 +27,9 @@ export const cartReducer = (state = {}, action) => {
     switch (action.type) {
         case ADD_TO_CART: {
             const { itemId } = action;
-            return { ...state, [itemId] : { id: itemId, count: 1 }}
+            return { ...state, 
+                    [itemId] : { id: itemId, count: 1 }
+            }
         }
         case REMOVE_FROM_CART: {
             const { itemId } = action;
