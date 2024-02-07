@@ -4,6 +4,7 @@ export const RECEIVE_REPORT = 'reports/RECEIVE_REPORT';
 export const UPDATE_REPORT = 'reports/UPDATE_REPORT';
 export const REMOVE_REPORT = 'reports/REMOVE_REPORT';
 
+
 /**  Action Creators: */
 export const loadReports = (reports) => ({
   type: LOAD_REPORTS,
@@ -30,8 +31,18 @@ export const removeReport = (reportId) => ({
 // Your code here 
 
 /** Selectors: */
+export const getReports = () =>  async dispatch => {
+  const res = await fetch('/api/reports');
+  
+  if(res.ok) {
+    const data = await res.json()
+    console.log(data)
+    dispatch(loadReports(data))
+  }
+}
 
 /** Reducer: */
+
 
 /** The reports reducer is complete and does not need to be modified */
 const reportsReducer = (state = {}, action) => {

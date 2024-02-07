@@ -1,15 +1,25 @@
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import ReportIndexItem from './ReportIndexItem';
 import { resetDatabase } from '../mocks/storage';
+import { useEffect } from 'react';
+import { getReports } from '../store/reports';
+import dataVersionOne from '../mocks/data/reportSeedsV1.json'
 
 const ReportsIndex = () => {
-  const reports = []; // populate from Redux store
+  const reports = useSelector(state => state.reports); // populate from Redux store
+  const reportList = Object.values(reports)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getReports())
+  }, [dispatch])
 
   /* **DO NOT CHANGE THE RETURN VALUE** */
   return (
     <section>
       <ul>
-        {reports.map((report) => (
+        {reportList?.map((report) => (
           <ReportIndexItem
             report={report}
             key={report.id}
