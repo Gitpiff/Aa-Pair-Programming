@@ -50,7 +50,7 @@ app.use((err, _req, _res, next) => {
     err.status = 422;
     const errorMessages = {};
     err.errors.forEach((e) => {
-      errorMessages[e.path] = 
+      errorMessages[e.path] =
         // If field appears as first word in error message, strip it out
         e.message.replace(/^number|^attack|^defense|^imageUrl|^name|^type|^moves/, "");
     });

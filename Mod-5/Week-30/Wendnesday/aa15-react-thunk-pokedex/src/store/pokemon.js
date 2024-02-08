@@ -28,6 +28,30 @@ export const getPokemon = () => async dispatch => {
   }
 };
 
+export const getOnePokemon = (id) => async dispatch => {
+  const response = await fetch(`/api/pokemon/${id}`);
+  if (response.ok) {
+    const onePokemon = await response.json();
+    dispatch(addOnePokemon(onePokemon));
+  }
+}
+
+export const createPokemon = (payload) => async dispatch => {
+  const response = await fetch(`/api/pokemon`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (response.ok) {
+    const newPokemon = await response.json();
+    dispatch(addOnePokemon(newPokemon));
+    return newPokemon
+  }
+}
+
 export const getPokemonTypes = () => async dispatch => {
   const response = await fetch(`/api/pokemon/types`);
 
@@ -61,7 +85,7 @@ const pokemonReducer = (state = initialState, action) => {
         list: sortList(action.list)
       };
     }
-    case LOAD_TYPES: 
+    case LOAD_TYPES:
       return {
         ...state,
         types: action.types
@@ -85,7 +109,7 @@ const pokemonReducer = (state = initialState, action) => {
         }
       };
     }
-    case LOAD_ITEMS: 
+    case LOAD_ITEMS:
       return {
         ...state,
         [action.pokemonId]: {
