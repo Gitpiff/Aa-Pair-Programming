@@ -36,7 +36,6 @@ const CreatePokemonForm = ({ hideForm }) => {
   }, [pokeTypes, type]);
 
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
