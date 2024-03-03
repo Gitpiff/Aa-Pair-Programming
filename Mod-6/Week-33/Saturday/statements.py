@@ -140,9 +140,38 @@ print(char_count("c", "Chamber of Secrets"))  #> 1
 print(char_count("b", "big fat bubble"))      #> 4
 
 
+# Vowel Count
+# Create a function called vowel_count that takes in a string and returns a count of how many vowels are in the string.
+
+# Write your solution here.
+def vowel_count(string):
+  count = 0
+  vowel = 'aeiouAEIOU'
+  for i in string:
+    if i in vowel:
+      count += 1
+  return count 
 
 
+print(vowel_count("App Academy"))         #> 4
+print(vowel_count("Coding Expert"))       #> 4
+print(vowel_count("Supreme"))             #> 3
+print(vowel_count("Chamber of Secrets"))  #> 5
 
 
+# Add Upper
+# Create a function add_upper that takes a string and returns all of the uppercase characters in the string.
+
+# Write your solution here.
+def add_upper(string):
+  result = ""
+  for i in string:
+    if i == i.upper():
+      result += i
+  return result 
 
 
+print(add_upper("ApPlE"))        #> APE
+print(add_upper("Coding"))       #> C
+print(add_upper("PIano"))        #> PI
+print(add_upper("SUPREME"))      #> SUPREME
