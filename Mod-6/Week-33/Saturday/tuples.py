@@ -47,3 +47,8 @@
 # (lowest, highest) = minmax(myNums)
 # print(lowest)
 # print(highest)
+
+# SINGLE ITEM TUPLE
+
+single = (1,) #> the comma will render a single item tuple
+print(single)
