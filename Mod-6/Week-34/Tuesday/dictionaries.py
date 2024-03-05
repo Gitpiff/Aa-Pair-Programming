@@ -22,18 +22,40 @@ book = {
     ]
 }
 
-print(book)
+# print(book)
 
 # Delete an item from the dictionary
 del book['stars']
 
-print(book)
+# print(book)
 
 # Add item to the dictionary
 book['stars'] = 4.9
 
-print(book)
+# print(book)
 
 # Go through every item
-for i in book:
-    print(i, book[i])
+# for i in book:
+    # print(i, book[i])
+
+# ********************** dic() **********************
+pond = dict(depth = 10, area = '210 sqft')
+print(pond)
+
+alligator = dict(
+    [
+        ('lifespan', 50),
+        ('length', 3.4),
+        ('lengthUnits', 'meters')
+    ]
+)
+
+print(alligator)
+
+
+
+# ********************** zip() **********************
+keys = ['name', 'home runs', 'strikeouts', 'rbi']
+values = ['Babe Ruth', 7214, 1330, 2214]
+player = dict(zip(keys, values))
+print(player)
