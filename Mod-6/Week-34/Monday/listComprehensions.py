@@ -87,7 +87,7 @@ for i in range(len(keys)):
 print(d)
 
 # DICTIONARY COMPREHENSIVE
-# { key: value, for-loop }
+# { key: value for-loop }
 
 compre_d = { keys[i].title(): values[i] for i in range(len(keys))}
 
@@ -95,6 +95,7 @@ print(compre_d)
 
 
 # USING ZIP -PREFERED WAY-
+# { key: value, for-loop }
 zip_d = { key.title(): value for key, value in zip(keys, values)}
 
 print(zip_d)
