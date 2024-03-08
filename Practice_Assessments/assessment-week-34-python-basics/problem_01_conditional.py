@@ -19,7 +19,7 @@
 # * else
 #
 # All inputs are guaranteed to be greater than 0.
-#
+#d
 #
 # In addition to running `pytest test/test_problem_01_conditional.py` you can also
 # test your code manually using the sample data below.
@@ -28,7 +28,17 @@
 
 # Your code here 
 
+def enough_donuts(donuts):
+    if donuts <= 1:
+        return "Not enough donuts"
+    elif donuts > 1 and donuts <= 4:
+        return "That's enough donuts"
+    elif donuts > 4 and donuts <= 12:
+        return "That's a lot of donuts"
+    elif donuts > 12:
+        return "I hope you are sharing"
+
 # __________SAMPLE TEST DATA__________ #
-# print(enough_donuts(1))       # Not enough donuts
-# print(enough_donuts(4))       # That's enough donuts
-# print(enough_donuts(14))      # I hope you are sharing
+print(enough_donuts(1))       # Not enough donuts
+print(enough_donuts(4))       # That's enough donuts
+print(enough_donuts(14))      # I hope you are sharing
