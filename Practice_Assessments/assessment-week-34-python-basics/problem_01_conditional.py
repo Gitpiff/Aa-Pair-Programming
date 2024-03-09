@@ -31,9 +31,9 @@
 def enough_donuts(donuts):
     if donuts <= 1:
         return "Not enough donuts"
-    elif donuts > 1 and donuts <= 4:
+    elif donuts <= 4:
         return "That's enough donuts"
-    elif donuts > 4 and donuts <= 12:
+    elif donuts <= 12:
         return "That's a lot of donuts"
     elif donuts > 12:
         return "I hope you are sharing"

@@ -14,8 +14,17 @@
 
 # Your code here 
 
+def while_loop_odds(list):
+    odds = []
+    num = 0
+    while num < len(list):
+        if num % 2 != 0:
+           print(num)
+
+
+
 # __________SAMPLE TEST DATA__________ #
-# lst1 = [1,2,4,5,7,9]
-# print(while_loop_odds(lst1))      # [1, 5, 7, 9]
-# lst2 = [2, 3, 4, 5, 6, 7]
-# print(while_loop_odds(lst2))      # [3, 5, 7]
+lst1 = [1,2,4,5,7,9]
+print(while_loop_odds(lst1))      # [1, 5, 7, 9]
+lst2 = [2, 3, 4, 5, 6, 7]
+print(while_loop_odds(lst2))      # [3, 5, 7]
