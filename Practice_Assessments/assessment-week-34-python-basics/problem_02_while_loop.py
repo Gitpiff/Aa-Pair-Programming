@@ -18,8 +18,12 @@ def while_loop_odds(list):
     odds = []
     num = 0
     while num < len(list):
-        if num % 2 != 0:
-           print(num)
+        val = list[num]
+        if val % 2 != 0:
+           odds.append(val)
+        num += 1
+    return odds
+    
 
 
 

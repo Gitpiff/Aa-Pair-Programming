@@ -35,7 +35,7 @@ def enough_donuts(donuts):
         return "That's enough donuts"
     elif donuts <= 12:
         return "That's a lot of donuts"
-    elif donuts > 12:
+    else:
         return "I hope you are sharing"
 
 # __________SAMPLE TEST DATA__________ #

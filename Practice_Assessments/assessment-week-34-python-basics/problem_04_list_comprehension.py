@@ -18,6 +18,9 @@
 
 # Your code here 
 
+def comprehension_sort(list):
+    return ([x for x in list if x % 2 != 0], [x for x in list if x % 2 == 0])
+
 # __________SAMPLE TEST DATA__________ #
 # lst1 = [1, 2, 4, 5, 7, 9]
 # print(comprehension_sort(lst1))    # ([1, 5, 7, 9], [2, 4])

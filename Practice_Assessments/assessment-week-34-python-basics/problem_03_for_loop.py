@@ -13,6 +13,12 @@
 #  ______________________________YOUR CODE BELOW______________________________#
 
 # Your code here 
+def for_loop_evens(list):
+    even = []
+    for num in list:
+        if num % 2 == 0:
+            even.append(num)
+    return even
 
 # __________SAMPLE TEST DATA__________ #
 # lst1 = [1,2,4,5,7,9]
