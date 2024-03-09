@@ -28,6 +28,25 @@
 
 # Your code here 
 
+class Dragon:
+    def __init__(self, name, color, is_good = True):
+        self._name = name
+        self._color = color
+        self._is_good = is_good
+
+    def breathes_fire(self):
+        return f"{self._name} breathes fire everywhere! BURN!!!"
+    
+    def change_nature(self):
+        self._is_good = not self._is_good
+        if self._is_good:
+            return f"{self._name} is a good dragon!"
+        return f"{self._name} is a bad dragon!"
+    
+    def __repr__(self):
+        return f"<{self._name} is a {self._color} dragon>"
+
+
 # __________SAMPLE TEST DATA__________ #
 # toothless = Dragon("Toothless", "black")
 # print(toothless.breathes_fire())      # Toothless breathes fire everywhere! BURN!!!!
