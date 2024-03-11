@@ -104,6 +104,41 @@ from random import randint
 
 # Your code here 
 
+class PizzaProcessor:
+
+    def __init__(self):
+        self._error = "Invalid data: please check your data types before proceeding."
+        self._pizzas_made = 0
+
+    @property
+    def pizzas_made(self):
+        return self._pizzas_made
+    
+    def pizza_pick(self, arg1, arg2, arg3):
+        if type(arg3) is not int or arg3 > 10:
+            return self._error
+        return f"{arg1.capitalize()} ordered a {arg2.lower()} crust pizza with {arg3} toppings!"
+    
+    def pizza_production(self, time_started = None, time_ended  = None, employee_name = None):
+        if type(time_started) is not str or type(time_ended) is not str or type(employee_name) is not str:
+            return self._error
+        return f"{employee_name} started making pizza at {time_started} and ended at {time_ended}."
+
+    def pizza_prepper(self, *args):
+        res = {}
+        for i in range(len(args)):
+            val = args[i]
+            if type(val is not int or val > 10):
+                return self._error
+            res[str(i)] = {"crust": "thin" if i % 2 == 0 else "stuffed", "toppings": val}
+        return res 
+    
+    def pizza_printer(self, **kwargs):
+        res = "Printing all the pizzas!"
+        for pizza_order in kwargs:
+            res += f"\nOrder {pizza_order} is a {kwargs[pizza_order]['crust']} crust with {kwargs[pizza_order]['toppings']} toppings\n"
+
+
 
 # __________SAMPLE TEST DATA__________ #
 # pizza_processor = PizzaProcessor()

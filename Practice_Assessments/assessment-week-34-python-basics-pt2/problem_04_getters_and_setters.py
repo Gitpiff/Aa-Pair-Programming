@@ -34,6 +34,33 @@
 
 # Your code here 
 
+class Wizard:
+
+    def __init__(self, name, magic = "Light", level = 0):
+        self._name = name 
+        self._level = level
+        if magic == "Dark":
+            self._magic = magic
+        else:
+            self._magic = "Light" 
+    
+    @property
+    def level(self):
+        return self._level
+    
+    @level.setter
+    def level(self, new_lvl):
+        if new_lvl > 100 or new_lvl < 0:
+            raise ValueError("Level outside of range 0-100.")
+        
+        else:
+            self._level = new_lvl
+
+    def __repr__(self):
+        return f"<{self._name} is a level {self._level} {self._magic} Wizard>"
+
+
+
 
 # __________SAMPLE TEST DATA__________ #
 # gandalf = Wizard("Gandalf", level=10, magic="Dark")

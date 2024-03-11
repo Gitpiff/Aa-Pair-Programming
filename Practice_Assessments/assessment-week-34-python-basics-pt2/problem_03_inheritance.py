@@ -34,6 +34,23 @@
 
 
 # Your code here 
+from problem_02_class import Dragon
+
+class FlyingDragon(Dragon):
+    
+    def __init__(self, name, color, is_good = True, wings = "massive"):
+        super().__init__(name, color, is_good)
+        self._wings = wings
+
+    def encounter(self):
+        if self._is_good:
+            return f"While traveling you suddenly meet a flying dragon named {self._name}! It lets you take a selfie and admire its {self._color} scales."
+        else:
+            return f"While traveling you suddenly meet a flying dragon named {self._name}! {super().breathes_fire()}"
+        
+    def fly(self):
+        return f"{self._name}'s {self._wings} wings launch it into the air, creating a powerful blast of wind that knocks you over."
+
 
 
 # __________SAMPLE TEST DATA__________ #
