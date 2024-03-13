@@ -1,0 +1,2 @@
+FLASK_APP=el_pan_app
+FLASK_DEBUG=True
