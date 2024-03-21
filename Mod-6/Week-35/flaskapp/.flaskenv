@@ -1,0 +1,1 @@
+FLASK_APP=dad_jokes
