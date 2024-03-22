@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Jokes</title>
+</head>
+<body>
+    <h2>Here are all of our Dad Jokes</h2>
+    <div>
+        {% for joke in dad_jokes %}
+        <div>
+            <p>Joke #: {{ joke.jokeid }}</p>
+            <p>Joke: {{ joke.joke }}</p>
+            <p>Punchline: {{ joke.punchline }}</p>
+            {% if joke.rating == "G" %}
+                <p style="color: green;">Rating: {{ joke.rating }}</p>
+            {% elif joke.rating == "R" %}
+                <p style="color: red;">Rating: {{ joke.rating }}</p>
+            {% else %}
+                <p style="color: darkblue;">Rating: {{ joke.rating }}</p>
+            {% endif %}
+            <p>----------------------------------</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

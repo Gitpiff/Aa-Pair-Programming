@@ -14,3 +14,7 @@ def index():
     joke = choice(dad_jokes)
     print(joke)
     return render_template("index.html", joke=joke)
+
+@app.route("/all")
+def all_jokes():
+    return render_template("all_jokes.html", dad_jokes=dad_jokes)
