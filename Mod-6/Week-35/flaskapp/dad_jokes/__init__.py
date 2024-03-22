@@ -2,10 +2,14 @@ from flask import Flask, render_template
 from .config import Config
 from .db_jokes import dad_jokes
 from random import choice
+from .routes.jokes_routes import jokes_router #import blueprint
+
 
 app = Flask(__name__)
 #print("dunder name", __name__)
 app.config.from_object(Config)
+
+app.register_blueprint(jokes_router) #after importing blueprint we register it
 
 # Defaults to a GET route, if we want to add a different method - @app.route("/", methods=["POST"]) 
 @app.route("/")
@@ -15,6 +19,3 @@ def index():
     print(joke)
     return render_template("index.html", joke=joke)
 
-@app.route("/all")
-def all_jokes():
-    return render_template("all_jokes.html", dad_jokes=dad_jokes)
