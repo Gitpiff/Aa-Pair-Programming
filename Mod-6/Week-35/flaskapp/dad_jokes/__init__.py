@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from .config import Config
 from .db_jokes import dad_jokes
 from random import choice
@@ -23,8 +23,10 @@ def index():
     return render_template("index.html", joke = joke)
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        return redirect("/")
     return render_template("login.html", form = form)
 

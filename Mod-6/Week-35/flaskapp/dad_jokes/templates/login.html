@@ -11,8 +11,8 @@
 
     <form action="" method="post">
         {{ form.hidden_tag()}}
-        <p>{{ form.username() }}</p>
-        <p>{{ form.password() }}</p>
+        <p>{{ form.username(placeholder = "Enter Username") }}</p>
+        <p>{{ form.password(placeholder = "Enter Password") }}</p>
         <p>{{ form.submit() }}</p>
     </form>
 </body>
