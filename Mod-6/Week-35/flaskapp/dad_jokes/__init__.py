@@ -4,6 +4,7 @@ from .db_jokes import dad_jokes
 from random import choice
 from .routes.jokes_routes import jokes_router #import blueprint
 from .routes.user_routes import user_routes
+from .forms.login import LoginForm
 
 
 app = Flask(__name__)
@@ -19,5 +20,11 @@ def index():
     # this is where you ad DB functionality
     joke = choice(dad_jokes)
     print(joke)
-    return render_template("index.html", joke=joke)
+    return render_template("index.html", joke = joke)
+
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template("login.html", form = form)
 

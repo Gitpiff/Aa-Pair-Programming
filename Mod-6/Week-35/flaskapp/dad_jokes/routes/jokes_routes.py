@@ -13,3 +13,14 @@ print("inside jokes blueprint", __name__)
 @jokes_router.route("/all")
 def all_jokes():
     return render_template("all_jokes.html", dad_jokes=dad_jokes)
+
+@jokes_router.route("/new", methods=["POST"])
+def create_new_joke():
+    new_joke = create_joke(
+    "Why did the scarecrow get a promotion?", 
+    "He was outstanding in his field", 
+    "G"
+    )
+    return render_template("jokeform.html", new_joke=new_joke)
+
+
