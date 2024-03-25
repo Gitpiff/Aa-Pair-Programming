@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dad Jokes</title>
-</head>
-<body style="background-color: gray;">
-    <h1>Welcome to Dad Jokes!</h1>
-    <a href="/jokes/all">All Jokes</a>
-    <a href="/users">All Users</a>
+{% extends "base.html" %}
+
+{% block potato %}
+<div>
     <div>
         <p>Joke: {{ joke.joke }}</p>
         <p>Punchline: {{ joke.punchline }}</p>
         <p>Rating: {{ joke.rating }}</p>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}

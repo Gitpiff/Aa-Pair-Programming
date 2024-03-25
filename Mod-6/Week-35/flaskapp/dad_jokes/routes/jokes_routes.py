@@ -24,3 +24,10 @@ def create_new_joke():
     return render_template("jokeform.html", new_joke=new_joke)
 
 
+@jokes_router.route("/<int:id>") #route parameters
+def one_joke(id):
+    print(id)
+    one_joke = dad_jokes[id]
+    # one_joke = Joke.query.get(id)
+    return render_template("all_jokes.html", dad_jokes = [one_joke])
+

@@ -21,6 +21,7 @@ def index():
     joke = choice(dad_jokes)
     print(joke)
     return render_template("index.html", joke = joke)
+    # return redirect("/jokes/all", 302)
 
 
 @app.route("/login", methods=["GET", "POST"])
