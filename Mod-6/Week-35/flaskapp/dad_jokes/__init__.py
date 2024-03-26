@@ -5,11 +5,14 @@ from random import choice
 from .routes.jokes_routes import jokes_router #import blueprint
 from .routes.user_routes import user_routes
 from .forms.login import LoginForm
+from .forms.joke_form import JokeForm
+from .models import db
 
 
 app = Flask(__name__)
 #print("dunder name", __name__)
 app.config.from_object(Config)
+db.int_app(app) #makes a connection between db and app
 
 app.register_blueprint(jokes_router) #after importing blueprint we register it
 app.register_blueprint(user_routes, url_prefix="/users")
@@ -31,3 +34,8 @@ def login():
         return redirect("/")
     return render_template("login.html", form = form)
 
+
+@app.route("/new", methods = ["POST"])
+def new():
+    form = JokeForm()
+    return render_template("add_joke.html", form = form)
