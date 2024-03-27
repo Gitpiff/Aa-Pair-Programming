@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from ..db_jokes import dad_jokes
+from ..forms.joke_form import JokeForm
 
 # Whatever we name our router we have to continue using in the rest of our routes for this file
 jokes_router = Blueprint('jokes', __name__, url_prefix="/jokes")
