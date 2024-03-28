@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Tracker</title>
+</head>
+<body>
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ form.sender_name.label }}    {{ form.sender_name }}
+        {{ form.recipient_name.label }}    {{ form.recipient_name }}
+        {{ form.origin.label }}    {{ form.origin }}
+        {{ form.destination.label }}    {{ form.destination }}
+        {{ form.is_express_shippind_desired.label }}    {{ form.is_express_shippind_desired }}
+
+    </form>
+</body>
+</html>
