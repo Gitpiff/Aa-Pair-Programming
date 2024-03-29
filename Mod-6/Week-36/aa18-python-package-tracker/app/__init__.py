@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect
 from flask_migrate import Migrate
 from .config import Configuration
 from .shipping_form import ShippingForm
+from . models import Package
 from .models import db
 app = Flask(__name__)
 
@@ -27,11 +28,11 @@ def new_package():
         
         db.session.add(new_package)
         db.session.commit()
-    return redirect('/')
-
-    if form.validate_on_submit():
-        print(dir(form))
         return redirect('/')
+
+    # if form.validate_on_submit():
+    #     print(dir(form))
+    #     return redirect('/')
     return render_template("shipping_request.html", form=ShippingForm())
 
 
