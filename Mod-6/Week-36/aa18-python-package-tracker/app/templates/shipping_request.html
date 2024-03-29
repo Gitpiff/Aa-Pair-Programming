@@ -6,13 +6,14 @@
     <title>Package Tracker</title>
 </head>
 <body>
-    <form method="post">
+    <form method="post" action="">
         {{ form.csrf_token }}
         {{ form.sender_name.label }}    {{ form.sender_name }}
         {{ form.recipient_name.label }}    {{ form.recipient_name }}
         {{ form.origin.label }}    {{ form.origin }}
         {{ form.destination.label }}    {{ form.destination }}
         {{ form.is_express_shippind_desired.label }}    {{ form.is_express_shippind_desired }}
+        {{ form.submit }}
 
     </form>
 </body>
