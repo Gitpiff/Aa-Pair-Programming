@@ -75,5 +75,26 @@
             SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-11.- Create a model, make sure when namig the table to use plural
- 
+11.- Create a model, import flask_sqlalchemy and start a db by invoking it, make sure to use the proper constraints
+    from flask_sqlalchemy import SQLAlchemy
+
+    db = SQLAlchemy()
+
+    class SimplePerson(db.Model):
+        __tablename__ = "simple_people"
+
+        id = db.Column(db.Integer, primary_key = True)
+        name = db.Column(db.String(50), nullable = False)
+        age = db.Column(db.Integer)
+        bio = db.Column(db.String(2000))
+
+12.- Import model db into __init__.py and start it 
+    from flask import Flask, render_template
+    from .config import Configuration
+    from .forms import SimpleForm
+    from .models import db
+
+    app = Flask(__name__)
+    app.config.from_object(Configuration)
+    db.init_app(app)
+
