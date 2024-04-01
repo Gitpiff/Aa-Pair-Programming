@@ -1,0 +1,79 @@
+1.- Install flask and all other dependencies -on root folder-
+
+2.- After installing them run the virtual environment -on root folder- pipenv shell
+
+3.- Initialize a flask application in __init__.py 
+   
+    from flask import Flask
+
+    app = Flask(__name__)
+
+4.- Define routes, that can be done in __init__.py or in their own blueprint, import render_template from flask
+    @app.route("/")
+        def home():
+        return render_template("some_template.html")
+
+5.- Create a form class in the forms.py file 
+    from flask_wtf import FlaskForm
+    from wtforms import StringField, IntegerField, TextAreaField, SubmitField
+    from wtforms.validators import DataRequired
+
+    class SimpleForm(FlaskForm):
+        name = StringField("Name", validators=[DataRequired()])
+        age = IntegerField("Age")
+        bio = TextAreaField("Biography")
+        submit = SubmitField("Submit")
+
+6.- Make sure to import the requested constraints in the html doc
+     <form method="post" action="/simple-form">
+        {{ form.csrf_token }}
+        {{ form.name.label }} {{ form.name }}
+        {{ form.age.label }} {{ form.age }}
+        {{ form.bio.label }} {{ form.bio }}
+        {{ form.submit }}
+    </form>
+
+7.- Set up the config.py make sure to include;
+    - In the .env file
+        FLASK_ENV=development
+        SECRET_KEY=elpan
+        DATABASE_URL=sqlite:///dev.db
+    - In the flaskenv file
+        FLASK_APP=app
+        FLASK_DEBUG=True
+
+8.- Apply the configuration to the app in  __init__.py
+    from flask import Flask, render_template
+    from .forms import SimpleForm
+    from .config import Configuration
+
+    app = Flask(__name__)
+    app.config.from_object(Configuration)
+
+
+9.- Import the forms file and Create a new route using the new form, don't forget to invoke it
+    from flask import Flask, render_template
+    from .config import Configuration
+    from .forms import SimpleForm
+
+    @app.route("/simple-form")
+    def simpleForm():
+        return render_template("simple_form.html", form = SimpleForm())
+
+10.- To add info to our local db make sure the DATABASE_URL is defined in the .env and properly invoked in the config.py
+    - .env
+        FLASK_ENV=development
+        SECRET_KEY=elpan
+        DATABASE_URL=sqlite:///dev.db
+
+    - .config.py 
+        import os 
+
+        class Configuration:
+            SECRET_KEY = os.environ.get('SECRET_KEY')
+            SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+            SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+11.- Create a model, make sure when namig the table to use plural
+ 
