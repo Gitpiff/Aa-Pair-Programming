@@ -110,5 +110,5 @@
     db.init_app(app)
     Migrate(app, db)
 
-    After that run in the terminal -make sure venv is running- flask db init to Initialize Migrate
+    After that run in the terminal -make sure venv is running- pipenv run flask db init to Initialize Migrate
     To autogenerate the migrations type in terminal flask db migrate -m "message"
