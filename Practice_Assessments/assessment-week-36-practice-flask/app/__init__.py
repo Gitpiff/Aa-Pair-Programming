@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect
+from flask_migrate import Migrate #Migrate info to db
 from .config import Configuration
 from .forms import SimpleForm
 from .models import db, SimplePerson
@@ -6,7 +7,7 @@ from .models import db, SimplePerson
 app = Flask(__name__)
 app.config.from_object(Configuration)
 db.init_app(app)
-
+Migrate(app, db)
 
 @app.route("/")
 def home():
