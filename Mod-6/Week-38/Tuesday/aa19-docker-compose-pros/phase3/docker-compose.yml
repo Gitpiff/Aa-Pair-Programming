@@ -12,10 +12,18 @@ services:
   postgres:
     image: postgres:9.6
     environment:
+<<<<<<< HEAD
       - POSTGRES_PASSWORD=passyword
+=======
+      - POSTGRES_PASSWORD="password"
+      # - POSTGRES_HOST_AUTH_METHOD=trust
+>>>>>>> 7ccb3daf19db743d473800e78ff6beb1e8da73e7
     volumes:
       - drupal-data:/var/lib/postgresql/data
 
 volumes:
   drupal-data:
+<<<<<<< HEAD
     
+=======
+>>>>>>> 7ccb3daf19db743d473800e78ff6beb1e8da73e7
