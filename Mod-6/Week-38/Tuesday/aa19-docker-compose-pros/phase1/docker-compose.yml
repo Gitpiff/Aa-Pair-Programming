@@ -5,7 +5,7 @@ services:
     build: .
     image: vic-syd
     environment:
-      - FLASK_ENV=development
+      - FLASK_DEBUG=true
     ports:
       - 5000:5000
 
