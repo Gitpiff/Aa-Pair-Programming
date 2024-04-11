@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: nodeapp
+    ports:
+      - 81:8080
+    environment:
+      - DB_USERNAME=reading_list_app
+      - DB_PASSWORD=password
+      - DB_DATABASE=reading_list
+      - DB_HOST=postgres
+      - NODE_ENV=development
+    command: ["./wait-for", "postgres:5432", "--",  "npm", "run", "build-start"]
+    volumes:
+      - ".:/app"
+    networks:
+      pgnodeapp:
+    depends_on:
+      - "db"
+
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=reading_list_app
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=reading_list
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      pgnodeapp:
+        aliases:
+         - "postgres"
+
+networks:
+  pgnodeapp:
+    driver: bridge
+
+volumes:
+  data:
