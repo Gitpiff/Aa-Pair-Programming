@@ -1,6 +1,7 @@
 from app.models import db, Rating
 from app import app
 
+
 with app.app_context():
     rating1 = Rating(book_id=1, value=10, email='jane@email.com')
     rating2 = Rating(book_id=1, value=8, email='stephon@email.com')
