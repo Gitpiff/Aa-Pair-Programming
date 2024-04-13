@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    image: flaskapp
+    ports:
+      - 5001:5000
+    environment:
+      - DB_USERNAME=ratings_user
+      - DB_PASSWORD=password
+      - DB_DATABASE=ratings
+      - DB_HOST=localhost
+      - FLASK_ENV=development
+    command: ["./entrypoint.sh"]
+    volumes:
+      - ".:/app"
+    networks:
+      pgapp:
+    depends_on:
+      - "db"
+
+  db:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=ratings_user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ratings
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      pgapp:
+        aliases:
+         - "postgres"
+
+networks:
+  pgapp:
+    driver: bridge
+
+volumes:
+  data:
